@@ -3,234 +3,102 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Panel - Clothing Store</title>
+    <title>Clothing Store Admin Panel</title>
     <link rel="stylesheet" href="./output/tailwind.css" />
   </head>
-  <body class="bg-gray-100 font-sans">
-    <!-- Sidebar -->
+  <body class="bg-gray-100">
     <div class="flex h-screen">
-      <div class="bg-gray-800 text-gray-100 w-64 space-y-6 px-2 py-7">
-        <h1 class="text-2xl font-semibold text-center">Store Admin</h1>
-        <nav>
-          <a href="#" class="block py-2.5 px-4 rounded hover:bg-gray-700"
-            >Dashboard</a
-          >
-          <a href="#" class="block py-2.5 px-4 rounded hover:bg-gray-700"
-            >Orders</a
-          >
-          <a href="#" class="block py-2.5 px-4 rounded hover:bg-gray-700"
-            >Products</a
-          >
-          <a href="#" class="block py-2.5 px-4 rounded hover:bg-gray-700"
-            >Categories</a
-          >
-          <a href="#" class="block py-2.5 px-4 rounded hover:bg-gray-700"
-            >Customers</a
-          >
-          <a href="#" class="block py-2.5 px-4 rounded hover:bg-gray-700"
-            >Settings</a
-          >
+      <!-- Sidebar -->
+      <aside class="w-64 bg-white shadow-lg">
+        <div class="p-6">
+          <h2 class="text-2xl font-semibold text-gray-800">Admin</h2>
+        </div>
+        <nav class="mt-8">
+          <ul>
+            <li class="p-4 hover:bg-gray-200 cursor-pointer">Dashboard</li>
+            <li class="p-4 hover:bg-gray-200 cursor-pointer">Orders</li>
+            <li class="p-4 hover:bg-gray-200 cursor-pointer">Products</li>
+            <li class="p-4 hover:bg-gray-200 cursor-pointer">Customers</li>
+            <li class="p-4 hover:bg-gray-200 cursor-pointer">Analytics</li>
+            <li class="p-4 hover:bg-gray-200 cursor-pointer">Settings</li>
+          </ul>
         </nav>
-      </div>
+      </aside>
 
-      <!-- Main Content Area -->
-      <div class="flex-1 p-6">
-        <!-- Top Navbar -->
-        <div class="flex justify-between items-center mb-8">
-          <h2 class="text-3xl font-semibold">Dashboard</h2>
-          <div class="flex items-center space-x-4">
-            <input
-              type="text"
-              placeholder="Search"
-              class="px-4 py-2 rounded-md bg-gray-200"
-            />
-            <button class="bg-blue-500 text-white px-3 py-2 rounded">
-              Notifications
-            </button>
-            <img
-              src="https://via.placeholder.com/40"
-              class="rounded-full w-10 h-10"
-              alt="User Avatar"
-            />
+      <!-- Main Content -->
+      <main class="flex-1 p-6">
+        <!-- Header -->
+        <header class="flex items-center justify-between">
+          <h1 class="text-3xl font-semibold">Dashboard</h1>
+          <button class="bg-blue-500 text-white px-4 py-2 rounded-lg">
+            Logout
+          </button>
+        </header>
+
+        <!-- Overview Stats -->
+        <div class="grid grid-cols-4 gap-6 mt-6">
+          <div class="bg-white p-4 rounded-lg shadow-md text-center">
+            <h2 class="text-gray-600">Total Sales</h2>
+            <p class="text-2xl font-semibold">$895.88</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow-md text-center">
+            <h2 class="text-gray-600">Available Products</h2>
+            <p class="text-2xl font-semibold">158</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow-md text-center">
+            <h2 class="text-gray-600">Total Orders</h2>
+            <p class="text-2xl font-semibold">420</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow-md text-center">
+            <h2 class="text-gray-600">Customer Experience</h2>
+            <p class="text-2xl font-semibold">27</p>
           </div>
         </div>
 
-        <!-- Dashboard Stats -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <h3 class="text-lg font-semibold">Total Sales</h3>
-            <p class="text-2xl font-bold">$25,000</p>
-          </div>
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <h3 class="text-lg font-semibold">Orders</h3>
-            <p class="text-2xl font-bold">320</p>
-          </div>
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <h3 class="text-lg font-semibold">Products</h3>
-            <p class="text-2xl font-bold">120</p>
-          </div>
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <h3 class="text-lg font-semibold">Customers</h3>
-            <p class="text-2xl font-bold">1500</p>
+        <!-- Sales Performance Graph (Placeholder) -->
+        <div class="bg-white mt-6 p-6 rounded-lg shadow-md">
+          <h2 class="text-xl font-semibold">Sales Performance</h2>
+          <div class="mt-4">
+            <!-- Placeholder for chart -->
+            <div class="h-64 bg-gray-200 rounded-lg"></div>
           </div>
         </div>
 
-        <!-- Graph and Reviews Section -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <!-- Graph Section -->
-          <div class="bg-white rounded-lg shadow-md p-6">
-            <h3 class="text-xl font-semibold mb-4">Daily Orders and Logins</h3>
-            <div
-              class="h-64 bg-gray-200 rounded-lg flex items-center justify-center"
-            >
-              <!-- Placeholder for Graph -->
-              <span class="text-gray-500">Graph Component Goes Here</span>
-            </div>
+        <!-- Recent Orders and Notifications -->
+        <div class="grid grid-cols-2 gap-6 mt-6">
+          <!-- Recent Orders -->
+          <div class="bg-white p-4 rounded-lg shadow-md">
+            <h2 class="text-xl font-semibold mb-4">Recent Orders</h2>
+            <ul>
+              <li class="flex justify-between mb-2">
+                <span>#96v4r5 - 2 Items</span>
+                <span class="text-yellow-500">Pending</span>
+              </li>
+              <li class="flex justify-between mb-2">
+                <span>#568gf8 - 4 Items</span>
+                <span class="text-green-500">Delivered</span>
+              </li>
+              <!-- Add more recent orders as needed -->
+            </ul>
           </div>
 
-          <!-- Product Reviews Section -->
-          <div
-            class="bg-white text-gray-900 rounded-lg p-6 w-full max-w-xs shadow-md"
-          >
-            <div class="flex justify-between items-center mb-4">
-              <h3 class="text-lg font-semibold">Customer Review</h3>
-              <button
-                class="text-gray-500 text-sm bg-gray-200 px-3 py-1 rounded-md"
-              >
-                This Month
-              </button>
-            </div>
-            <div class="text-4xl font-bold mb-2">4.7</div>
-            <div class="flex items-center mb-2">
-              <div class="flex items-center text-yellow-500">
-                <!-- Stars (5 filled stars and one half-star) -->
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5 fill-current"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M12 2L13.09 8H19L14.47 11.24L15.58 17.53L12 13.89L8.41 17.53L9.53 11.24L5 8H10.91L12 2Z"
-                  />
-                </svg>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5 fill-current"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M12 2L13.09 8H19L14.47 11.24L15.58 17.53L12 13.89L8.41 17.53L9.53 11.24L5 8H10.91L12 2Z"
-                  />
-                </svg>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5 fill-current"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M12 2L13.09 8H19L14.47 11.24L15.58 17.53L12 13.89L8.41 17.53L9.53 11.24L5 8H10.91L12 2Z"
-                  />
-                </svg>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5 fill-current"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M12 2L13.09 8H19L14.47 11.24L15.58 17.53L12 13.89L8.41 17.53L9.53 11.24L5 8H10.91L12 2Z"
-                  />
-                </svg>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5 fill-current"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M12 2L13.09 8H19L14.47 11.24L15.58 17.53L12 13.89L8.41 17.53L9.53 11.24L5 8H10.91L12 2Z"
-                  />
-                </svg>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5 fill-current text-yellow-500 opacity-50"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M12 2L13.09 8H19L14.47 11.24L15.58 17.53L12 13.89L8.41 17.53L9.53 11.24L5 8H10.91L12 2Z"
-                  />
-                </svg>
-              </div>
-              <span class="text-sm ml-2 text-gray-500"
-                >Based on 602 ratings</span
-              >
-            </div>
-
-            <!-- Star Ratings Progress Bars -->
-            <div class="space-y-1">
-              <!-- Each rating level -->
-              <div class="flex items-center">
-                <span class="text-sm text-gray-500 w-16">5 Star</span>
-                <div class="w-full bg-gray-200 rounded-full h-2 mx-2">
-                  <div
-                    class="bg-blue-500 h-2 rounded-full"
-                    style="width: 40%"
-                  ></div>
-                </div>
-                <span class="text-sm text-gray-500">40%</span>
-              </div>
-              <div class="flex items-center">
-                <span class="text-sm text-gray-500 w-16">4 Star</span>
-                <div class="w-full bg-gray-200 rounded-full h-2 mx-2">
-                  <div
-                    class="bg-blue-500 h-2 rounded-full"
-                    style="width: 35%"
-                  ></div>
-                </div>
-                <span class="text-sm text-gray-500">35%</span>
-              </div>
-              <div class="flex items-center">
-                <span class="text-sm text-gray-500 w-16">3 Star</span>
-                <div class="w-full bg-gray-200 rounded-full h-2 mx-2">
-                  <div
-                    class="bg-blue-500 h-2 rounded-full"
-                    style="width: 32%"
-                  ></div>
-                </div>
-                <span class="text-sm text-gray-500">32%</span>
-              </div>
-              <div class="flex items-center">
-                <span class="text-sm text-gray-500 w-16">2 Star</span>
-                <div class="w-full bg-gray-200 rounded-full h-2 mx-2">
-                  <div
-                    class="bg-blue-500 h-2 rounded-full"
-                    style="width: 28%"
-                  ></div>
-                </div>
-                <span class="text-sm text-gray-500">28%</span>
-              </div>
-              <div class="flex items-center">
-                <span class="text-sm text-gray-500 w-16">1 Star</span>
-                <div class="w-full bg-gray-200 rounded-full h-2 mx-2">
-                  <div
-                    class="bg-blue-500 h-2 rounded-full"
-                    style="width: 22%"
-                  ></div>
-                </div>
-                <span class="text-sm text-gray-500">22%</span>
-              </div>
-            </div>
-
-            <!-- Total Reviews & See All Button -->
-            <div class="flex justify-between items-center mt-4">
-              <p class="text-sm text-gray-500">Total 600 Reviews</p>
-              <button
-                class="text-sm text-gray-500 bg-gray-200 px-3 py-1 rounded-md"
-              >
-                See All
-              </button>
-            </div>
+          <!-- Notifications -->
+          <div class="bg-white p-4 rounded-lg shadow-md">
+            <h2 class="text-xl font-semibold mb-4">Notifications</h2>
+            <ul>
+              <li class="flex justify-between mb-2">
+                <span>Your product is out of stock</span>
+                <span class="text-gray-500">Oct 9</span>
+              </li>
+              <li class="flex justify-between mb-2">
+                <span>Last request for settlement</span>
+                <span class="text-gray-500">Oct 3</span>
+              </li>
+              <!-- Add more notifications as needed -->
+            </ul>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   </body>
 </html>
