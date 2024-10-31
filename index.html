@@ -16,14 +16,14 @@
         <a href="#" class="text-5xl font-bold text-white">Logo</a>
 
         <!-- Menu -->
-        <nav class="space-x-4 hidden md:flex">
-          <a href="#" class="text-white hover:text-gray-200 text-xl">Men</a>
-          <a href="#" class="text-white hover:text-gray-200 text-xl">Women</a>
-          <a href="#" class="text-white hover:text-gray-200 text-xl">Kids</a>
-          <a href="#" class="text-white hover:text-gray-200 text-xl"
+        <nav class="space-x-6 hidden md:flex">
+          <a href="#" class="text-white hover:text-indigo-200 text-xl">Men</a>
+          <a href="#" class="text-white hover:text-indigo-200 text-xl">Women</a>
+          <a href="#" class="text-white hover:text-indigo-200 text-xl">Kids</a>
+          <a href="#" class="text-white hover:text-indigo-200 text-xl"
             >NEW ARRIVAL</a
           >
-          <a href="#" class="text-white hover:text-gray-200 text-xl">Sales</a>
+          <a href="#" class="text-white hover:text-indigo-200 text-xl">Sales</a>
         </nav>
 
         <!-- Search Box, Cart Icon, Login -->
@@ -74,22 +74,39 @@
     </section>
 
     <!-- Card Section -->
+
     <section class="py-12 bg-gray-100">
       <div
         class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-8"
       >
         <!-- Women's Fashion Card -->
-        <div class="bg-white shadow-lg rounded-lg p-8 text-center">
-          <div class="bg-gray-200 h-64 mb-4 rounded"></div>
+        <div
+          class="relative bg-white shadow-lg rounded-lg overflow-hidden h-80"
+        >
+          <div class="absolute inset-0 bg-gray-200 h-full">
+            <img src="./images/WomenFashion.jpg" alt="" />
+          </div>
           <!-- Placeholder for image -->
-          <h2 class="text-2xl font-bold">Women's Fashion</h2>
+          <button
+            class="absolute inset-x-0 top-60 mx-auto w-44 py-3 bg-white bg-opacity-20 backdrop-blur-lg text-gray-800 font-semibold border border-gray-300 rounded-lg shadow-lg hover:bg-opacity-30 transition duration-300 ease-in-out"
+          >
+            Women's Fashion
+          </button>
         </div>
 
         <!-- Men's Styles Card -->
-        <div class="bg-white shadow-lg rounded-lg p-8 text-center">
-          <div class="bg-gray-200 h-64 mb-4 rounded"></div>
+        <div
+          class="relative bg-white shadow-lg rounded-lg overflow-hidden h-80"
+        >
+          <div class="absolute inset-0 bg-gray-200 h-full">
+            <img src="./images/Men-Fashion.webp" alt="" />
+          </div>
           <!-- Placeholder for image -->
-          <h2 class="text-2xl font-bold">Men's Styles</h2>
+          <button
+            class="absolute inset-x-0 top-60 mx-auto w-44 py-3 bg-white bg-opacity-20 backdrop-blur-lg text-gray-800 font-semibold border border-gray-300 rounded-lg shadow-lg hover:bg-opacity-30 transition duration-300 ease-in-out"
+          >
+            Men's Styles
+          </button>
         </div>
       </div>
     </section>
