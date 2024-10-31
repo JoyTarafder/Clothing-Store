@@ -13,7 +13,7 @@ This is a responsive, modern website for an online clothing store, designed with
 
 ## Preview
 
-![Website Screenshot](https://i.ibb.co.com/ZcS18kW/photo.png)
+![Website Screenshot](https://github.com/user-attachments/assets/7f24ba51-65da-47c5-ac93-1706cb8bcba8)
 
 ## Technologies Used
 
