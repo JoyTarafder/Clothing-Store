@@ -654,6 +654,10 @@ video {
   z-index: 20;
 }
 
+.m-64 {
+  margin: 16rem;
+}
+
 .mx-2 {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
@@ -730,6 +734,18 @@ video {
 
 .mt-8 {
   margin-top: 2rem;
+}
+
+.mt-40 {
+  margin-top: 10rem;
+}
+
+.mb-60 {
+  margin-bottom: 15rem;
+}
+
+.mb-96 {
+  margin-bottom: 24rem;
 }
 
 .block {
@@ -1119,6 +1135,11 @@ video {
 .bg-indigo-950 {
   --tw-bg-opacity: 1;
   background-color: rgb(30 27 75 / var(--tw-bg-opacity));
+}
+
+.bg-teal-900 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(19 78 74 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-20 {
