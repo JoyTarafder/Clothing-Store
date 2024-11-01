@@ -7,13 +7,15 @@
     <link rel="stylesheet" href="./output/tailwind.css" />
   </head>
   <body class="bg-gray-100">
-    <div class="flex h-screen">
+    <div class="flex flex-col md:flex-row h-screen">
       <!-- Sidebar -->
-      <aside class="w-64 bg-slate-800 shadow-lg">
-        <div class="p-6">
-          <h2 class="text-2xl font-semibold text-gray-50">Admin Panel</h2>
+      <aside class="w-full md:w-64 bg-slate-800 shadow-lg md:block">
+        <div class="p-4 md:p-6">
+          <h2 class="text-lg md:text-2xl font-semibold text-gray-50">
+            Admin Panel
+          </h2>
         </div>
-        <nav class="mt-8">
+        <nav class="mt-4 md:mt-8">
           <ul>
             <li class="p-4 text-white hover:bg-slate-600 cursor-pointer">
               Dashboard
@@ -38,86 +40,91 @@
       </aside>
 
       <!-- Main Content -->
-      <main class="flex-1 p-6">
+      <main class="flex-1 p-4 md:p-6">
         <!-- Header -->
-        <header class="flex items-center justify-between">
-          <h1 class="text-3xl font-semibold">Dashboard</h1>
-          <div>
-            
+        <header class="flex items-center justify-between flex-wrap">
+          <h1 class="text-2xl md:text-3xl font-semibold">Dashboard</h1>
+          <div class="mt-2 md:mt-0">
             <button>
-              <img src="./images/logout.png" alt="Logout" class="w-7 h-7" />
+              <img
+                src="./images/logout.png"
+                alt="Logout"
+                class="w-6 h-6 md:w-7 md:h-7"
+              />
             </button>
           </div>
         </header>
 
         <!-- Overview Stats -->
-        <div class="grid grid-cols-4 gap-6 mt-6">
-          <div class="bg-white p-4 rounded-lg shadow-md text-center">
-            <h2 class="text-gray-600">Total Sales</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-6">
+          <div class="bg-white p-3 md:p-4 rounded-lg shadow-md text-center">
+            <h2 class="text-gray-600 text-sm md:text-base">Total Sales</h2>
             <div
-              class="text-2xl font-semibold flex mx-auto justify-center gap-2"
+              class="text-xl md:text-2xl font-semibold flex justify-center gap-2"
             >
               <img
                 src="./images/bangladeshi-taka-sign.png"
-                class="w-5 h-5 mt-2"
+                class="w-4 h-4 md:w-5 md:h-5 mt-2"
               />
               895.88
             </div>
           </div>
-          <div class="bg-white p-4 rounded-lg shadow-md text-center">
-            <h2 class="text-gray-600">Available Products</h2>
-            <p class="text-2xl font-semibold">158</p>
+          <div class="bg-white p-3 md:p-4 rounded-lg shadow-md text-center">
+            <h2 class="text-gray-600 text-sm md:text-base">
+              Available Products
+            </h2>
+            <p class="text-xl md:text-2xl font-semibold">158</p>
           </div>
-          <div class="bg-white p-4 rounded-lg shadow-md text-center">
-            <h2 class="text-gray-600">Total Orders</h2>
-            <p class="text-2xl font-semibold">420</p>
+          <div class="bg-white p-3 md:p-4 rounded-lg shadow-md text-center">
+            <h2 class="text-gray-600 text-sm md:text-base">Total Orders</h2>
+            <p class="text-xl md:text-2xl font-semibold">420</p>
           </div>
-          <div class="bg-white p-4 rounded-lg shadow-md text-center">
-            <h2 class="text-gray-600">Customer Experience</h2>
-            <p class="text-2xl font-semibold">27</p>
+          <div class="bg-white p-3 md:p-4 rounded-lg shadow-md text-center">
+            <h2 class="text-gray-600 text-sm md:text-base">
+              Customer Experience
+            </h2>
+            <p class="text-xl md:text-2xl font-semibold">27</p>
           </div>
         </div>
 
         <!-- Sales Performance Graph (Placeholder) -->
-        <div class="bg-white mt-6 p-6 rounded-lg shadow-md">
-          <h2 class="text-xl font-semibold">Sales Performance</h2>
+        <div class="bg-white mt-6 p-4 md:p-6 rounded-lg shadow-md">
+          <h2 class="text-lg md:text-xl font-semibold">Sales Performance</h2>
           <div class="mt-4">
             <!-- Placeholder for chart -->
-            <div class="h-64 bg-gray-200 rounded-lg"></div>
+            <div class="h-40 md:h-64 bg-gray-200 rounded-lg"></div>
           </div>
         </div>
 
         <!-- Recent Orders and Notifications -->
-        <div class="grid grid-cols-2 gap-6 mt-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-6">
           <!-- Recent Orders -->
           <div class="bg-white p-4 rounded-lg shadow-md">
-            <h2 class="text-xl font-semibold mb-4">Recent Orders</h2>
+            <h2 class="text-lg md:text-xl font-semibold mb-4">Recent Orders</h2>
             <ul>
-              <li class="flex justify-between mb-2">
+              <li class="flex justify-between mb-2 text-sm md:text-base">
                 <span>#96v4r5 - 2 Items</span>
                 <span class="text-yellow-500">Pending</span>
               </li>
-              <li class="flex justify-between mb-2">
+              <li class="flex justify-between mb-2 text-sm md:text-base">
                 <span>#568gf8 - 4 Items</span>
                 <span class="text-green-500">Delivered</span>
               </li>
-              <!-- Add more recent orders as needed -->
             </ul>
           </div>
 
           <!-- Notifications -->
           <div class="bg-white p-4 rounded-lg shadow-md">
-            <h2 class="text-xl font-semibold mb-4">Notifications</h2>
+            <h2 class="text-lg md:text-xl font-semibold mb-4">Notifications</h2>
             <ul>
-              <li class="flex justify-between mb-2">
+              <li class="flex justify-between mb-2 text-sm md:text-base">
                 <span>Your product is out of stock</span>
                 <span class="text-gray-500">Oct 9</span>
               </li>
-              <li class="flex justify-between mb-2">
+              <li class="flex justify-between mb-2 text-sm md:text-base">
                 <span>Last request for settlement</span>
                 <span class="text-gray-500">Oct 3</span>
               </li>
-              <!-- Add more notifications as needed -->
             </ul>
           </div>
         </div>
