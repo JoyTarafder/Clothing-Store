@@ -8,64 +8,49 @@
   </head>
   <body class="bg-gray-300 text-gray-900">
     <!-- Navbar on top -->
-    <header class="fixed top-0 w-full z-20 bg-teal-900 shadow-lg">
-      <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center"
-      >
-        <!-- Logo -->
-        <a href="./index.html" class="text-3xl font-bold text-white">Logo</a>
+    <header class="fixed top-0 w-full z-20 bg-teal-900 bg-opacity-50 backdrop-blur-md shadow-lg">
+  <div
+    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center"
+  >
+    <!-- Logo -->
+    <a href="./index.html" class="text-3xl font-bold text-white">Logo</a>
 
-        <!-- Menu -->
-        <nav class="space-x-6 hidden md:flex">
-          <a href="./men.html" class="text-white hover:text-indigo-200 text-xl"
-            >Men</a
-          >
-          <a
-            href="./women.html"
-            class="text-white hover:text-indigo-200 text-xl"
-            >Women</a
-          >
-          <a href="./kids.html" class="text-white hover:text-indigo-200 text-xl"
-            >Kids</a
-          >
-          <a
-            href="./newArrival.html"
-            class="text-white hover:text-indigo-200 text-xl"
-            >NEW ARRIVAL</a
-          >
-          <a
-            href="./sales.html"
-            class="text-white hover:text-indigo-200 text-xl"
-            >Sales</a
-          >
-        </nav>
+    <!-- Menu -->
+    <nav class="space-x-6 hidden md:flex">
+      <a href="./men.html" class="text-white hover:text-indigo-200 text-xl">Men</a>
+      <a href="./women.html" class="text-white hover:text-indigo-200 text-xl">Women</a>
+      <a href="./kids.html" class="text-white hover:text-indigo-200 text-xl">Kids</a>
+      <a href="./newArrival.html" class="text-white hover:text-indigo-200 text-xl">NEW ARRIVAL</a>
+      <a href="./sales.html" class="text-white hover:text-indigo-200 text-xl">Sales</a>
+    </nav>
 
-        <!-- Search Box, Cart Icon, Login -->
-        <div class="flex items-center space-x-4">
-          <!-- Search Box -->
-          <div class="relative">
-            <input
-              type="text"
-              class="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400 text-gray-900"
-              placeholder="Search..."
-            />
-            <i class="fas fa-search absolute top-3 right-3 text-gray-400"></i>
-          </div>
-          <!-- Cart Icon -->
-          <a href="#" class="hover:text-gray-200">
-            <img src="./images/shopping-bag.png" class="w-10 h-10" alt="Cart" />
-          </a>
-          <!-- Log in Button -->
-          <a href="./login.html" class="text-white hover:text-gray-200 text-xl">
-            <button
-              class="bg-blue-700 hover:bg-blue-950 text-white py-2 px-6 rounded-lg"
-            >
-              Log in
-            </button>
-          </a>
-        </div>
+    <!-- Search Box, Cart Icon, Login -->
+    <div class="flex items-center space-x-4">
+      <!-- Search Box -->
+      <div class="relative">
+        <input
+          type="text"
+          class="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400 text-gray-900"
+          placeholder="Search..."
+        />
+        <i class="fas fa-search absolute top-3 right-3 text-gray-400"></i>
       </div>
-    </header>
+      <!-- Cart Icon -->
+      <a href="#" class="hover:text-gray-200">
+        <img src="./images/shopping-bag.png" class="w-10 h-10" alt="Cart" />
+      </a>
+      <!-- Log in Button -->
+      <a href="./login.html" class="text-white hover:text-gray-200 text-xl">
+        <button
+          class="bg-blue-700 bg-opacity-70 hover:bg-blue-950 text-white py-2 px-6 rounded-lg"
+        >
+          Log in
+        </button>
+      </a>
+    </div>
+  </div>
+</header>
+
 
     <main class="pt-24 px-4">
       <div class="container mx-auto p-4">
@@ -74,39 +59,65 @@
           <!-- Filter Section -->
           <aside class="w-full md:w-1/4 bg-white rounded-lg shadow-lg p-4">
             <h2 class="font-semibold text-lg mb-4">Filters</h2>
+          
+            <!-- Price Range -->
             <div class="mb-4">
               <h3 class="font-semibold">Price Range</h3>
               <input type="range" class="w-full" min="0" max="1000" />
             </div>
+          
+            <!-- Size -->
             <div class="mb-4">
               <h3 class="font-semibold">Size</h3>
               <ul>
-                <li><input type="checkbox" class="mr-2" />Small</li>
-                <li><input type="checkbox" class="mr-2" />Medium</li>
-                <li><input type="checkbox" class="mr-2" />Large</li>
+                <li>
+                  <input type="radio" name="size" class="rounded-full mr-2 accent-blue-500" /> Small
+                </li>
+                <li>
+                  <input type="radio" name="size" class="rounded-full mr-2 accent-blue-500" /> Medium
+                </li>
+                <li>
+                  <input type="radio" name="size" class="rounded-full mr-2 accent-blue-500" /> Large
+                </li>
               </ul>
             </div>
+          
+            <!-- Color -->
             <div class="mb-4">
               <h3 class="font-semibold">Color</h3>
               <ul>
-                <li><input type="checkbox" class="mr-2" />White</li>
-                <li><input type="checkbox" class="mr-2" />Black</li>
-                <li><input type="checkbox" class="mr-2" />Blue</li>
+                <li>
+                  <input type="checkbox" class="mr-2 appearance-none w-6 h-6 rounded-md bg-white border-2 border-gray-300 checked:bg-white checked:border-none"
+                    style="background-color: white;" />
+                  White
+                </li>
+                <li>
+                  <input type="checkbox" class="mr-2 appearance-none w-6 h-6 rounded-md bg-black border-2 border-gray-300 checked:border-none"
+                    style="background-color: black;" />
+                  Black
+                </li>
+                <li>
+                  <input type="checkbox" class="mr-2 appearance-none w-6 h-6 rounded-md bg-blue-500 border-2 border-gray-300 checked:border-none"
+                    style="background-color: blue;" />
+                  Blue
+                </li>
               </ul>
             </div>
           </aside>
+          
 
           <!-- Product Cards Section -->
           <section
             class="w-full md:w-3/4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
           >
-            <!-- Product Card 1 -->
+            <!-- Product Card 1 Start-->
             <div class="bg-white rounded-lg shadow-lg p-4">
-              <div class="relative">
+              <div class="relative h-48">
+                <!-- Set a fixed height here -->
                 <img
-                  src="https://via.placeholder.com/150"
+                  src="./images/items/men-itmes-1.jpg"
                   alt="Product Image"
-                  class="w-full rounded-lg"
+                  class="w-full h-full object-cover rounded-lg"
                 />
                 <span
                   class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs"
@@ -145,13 +156,14 @@
               </div>
             </div>
             <!-- Product Card 1 End-->
-            <!-- Product Card 2 -->
+            <!-- Product Card 2 Start-->
             <div class="bg-white rounded-lg shadow-lg p-4">
-              <div class="relative">
+              <div class="relative h-48">
+                <!-- Set a fixed height here -->
                 <img
-                  src="https://via.placeholder.com/150"
+                  src="./images/items/men-itmes-1.jpg"
                   alt="Product Image"
-                  class="w-full rounded-lg"
+                  class="w-full h-full object-cover rounded-lg"
                 />
                 <span
                   class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs"
@@ -190,13 +202,14 @@
               </div>
             </div>
             <!-- Product Card 2 End-->
-            <!-- Product Card 3 -->
+            <!-- Product Card 3 Start-->
             <div class="bg-white rounded-lg shadow-lg p-4">
-              <div class="relative">
+              <div class="relative h-48">
+                <!-- Set a fixed height here -->
                 <img
-                  src="https://via.placeholder.com/150"
+                  src="./images/items/men-itmes-1.jpg"
                   alt="Product Image"
-                  class="w-full rounded-lg"
+                  class="w-full h-full object-cover rounded-lg"
                 />
                 <span
                   class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs"
@@ -235,13 +248,14 @@
               </div>
             </div>
             <!-- Product Card 3 End-->
-            <!-- Product Card 4 -->
+            <!-- Product Card 4 Start-->
             <div class="bg-white rounded-lg shadow-lg p-4">
-              <div class="relative">
+              <div class="relative h-48">
+                <!-- Set a fixed height here -->
                 <img
-                  src="https://via.placeholder.com/150"
+                  src="./images/items/men-itmes-1.jpg"
                   alt="Product Image"
-                  class="w-full rounded-lg"
+                  class="w-full h-full object-cover rounded-lg"
                 />
                 <span
                   class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs"
@@ -280,13 +294,14 @@
               </div>
             </div>
             <!-- Product Card 4 End-->
-            <!-- Product Card 5 -->
+            <!-- Product Card 5 Start-->
             <div class="bg-white rounded-lg shadow-lg p-4">
-              <div class="relative">
+              <div class="relative h-48">
+                <!-- Set a fixed height here -->
                 <img
-                  src="https://via.placeholder.com/150"
+                  src="./images/items/men-itmes-1.jpg"
                   alt="Product Image"
-                  class="w-full rounded-lg"
+                  class="w-full h-full object-cover rounded-lg"
                 />
                 <span
                   class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs"
@@ -325,13 +340,14 @@
               </div>
             </div>
             <!-- Product Card 5 End-->
-            <!-- Product Card 6 -->
+            <!-- Product Card 6 Start-->
             <div class="bg-white rounded-lg shadow-lg p-4">
-              <div class="relative">
+              <div class="relative h-48">
+                <!-- Set a fixed height here -->
                 <img
-                  src="https://via.placeholder.com/150"
+                  src="./images/items/men-itmes-1.jpg"
                   alt="Product Image"
-                  class="w-full rounded-lg"
+                  class="w-full h-full object-cover rounded-lg"
                 />
                 <span
                   class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs"
@@ -370,13 +386,14 @@
               </div>
             </div>
             <!-- Product Card 6 End-->
-            <!-- Product Card 7 -->
+            <!-- Product Card 7 Start-->
             <div class="bg-white rounded-lg shadow-lg p-4">
-              <div class="relative">
+              <div class="relative h-48">
+                <!-- Set a fixed height here -->
                 <img
-                  src="https://via.placeholder.com/150"
+                  src="./images/items/men-itmes-1.jpg"
                   alt="Product Image"
-                  class="w-full rounded-lg"
+                  class="w-full h-full object-cover rounded-lg"
                 />
                 <span
                   class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs"
@@ -415,13 +432,14 @@
               </div>
             </div>
             <!-- Product Card 7 End-->
-            <!-- Product Card 8 -->
+            <!-- Product Card 8 Start-->
             <div class="bg-white rounded-lg shadow-lg p-4">
-              <div class="relative">
+              <div class="relative h-48">
+                <!-- Set a fixed height here -->
                 <img
-                  src="https://via.placeholder.com/150"
+                  src="./images/items/men-itmes-1.jpg"
                   alt="Product Image"
-                  class="w-full rounded-lg"
+                  class="w-full h-full object-cover rounded-lg"
                 />
                 <span
                   class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs"
@@ -460,18 +478,19 @@
               </div>
             </div>
             <!-- Product Card 8 End-->
-            <!-- Product Card 9 -->
+            <!-- Product Card 9 Start-->
             <div class="bg-white rounded-lg shadow-lg p-4">
-              <div class="relative">
+              <div class="relative h-48">
+                <!-- Set a fixed height here -->
                 <img
-                  src="https://via.placeholder.com/150"
+                  src="./images/items/men-itmes-1.jpg"
                   alt="Product Image"
-                  class="w-full rounded-lg"
+                  class="w-full h-full object-cover rounded-lg"
                 />
                 <span
-                  class="absolute top-2 left-2 bg-red-600 text-white px-2 py-1 rounded text-xs"
-                  >Out of stock
-                </span>
+                  class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs"
+                  >New Arrival</span
+                >
                 <button
                   class="absolute top-2 right-2 text-gray-400 hover:text-red-500"
                 >
@@ -505,6 +524,7 @@
               </div>
             </div>
             <!-- Product Card 9 End-->
+            <!-- Repeat the same for other product cards, ensuring the same class structure for each image container -->
           </section>
         </div>
       </div>
