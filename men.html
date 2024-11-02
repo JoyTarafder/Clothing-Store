@@ -5,110 +5,187 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Men</title>
     <link rel="stylesheet" href="./output/tailwind.css" />
+    <link rel="stylesheet" href="./src/tailwind.css" />
   </head>
   <body class="bg-gray-300 text-gray-900">
     <!-- Navbar on top -->
-    <header class="fixed top-0 w-full z-20 bg-teal-900 bg-opacity-50 backdrop-blur-md shadow-lg">
-  <div
-    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center"
-  >
-    <!-- Logo -->
-    <a href="./index.html" class="text-3xl font-bold text-white">Logo</a>
+    <header
+      class="fixed top-0 w-full z-20 bg-teal-900 bg-opacity-50 backdrop-blur-md shadow-lg"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center"
+      >
+        <!-- Logo -->
+        <a href="./index.html" class="text-3xl font-bold text-white">Logo</a>
 
-    <!-- Menu -->
-    <nav class="space-x-6 hidden md:flex">
-      <a href="./men.html" class="text-white hover:text-indigo-200 text-xl">Men</a>
-      <a href="./women.html" class="text-white hover:text-indigo-200 text-xl">Women</a>
-      <a href="./kids.html" class="text-white hover:text-indigo-200 text-xl">Kids</a>
-      <a href="./newArrival.html" class="text-white hover:text-indigo-200 text-xl">NEW ARRIVAL</a>
-      <a href="./sales.html" class="text-white hover:text-indigo-200 text-xl">Sales</a>
-    </nav>
+        <!-- Menu -->
+        <nav class="space-x-6 hidden md:flex">
+          <a href="./men.html" class="text-white hover:text-indigo-200 text-xl"
+            >Men</a
+          >
+          <a
+            href="./women.html"
+            class="text-white hover:text-indigo-200 text-xl"
+            >Women</a
+          >
+          <a href="./kids.html" class="text-white hover:text-indigo-200 text-xl"
+            >Kids</a
+          >
+          <a
+            href="./newArrival.html"
+            class="text-white hover:text-indigo-200 text-xl"
+            >NEW ARRIVAL</a
+          >
+          <a
+            href="./sales.html"
+            class="text-white hover:text-indigo-200 text-xl"
+            >Sales</a
+          >
+        </nav>
 
-    <!-- Search Box, Cart Icon, Login -->
-    <div class="flex items-center space-x-4">
-      <!-- Search Box -->
-      <div class="relative">
-        <input
-          type="text"
-          class="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400 text-gray-900"
-          placeholder="Search..."
-        />
-        <i class="fas fa-search absolute top-3 right-3 text-gray-400"></i>
+        <!-- Search Box, Cart Icon, Login -->
+        <div class="flex items-center space-x-4">
+          <!-- Search Box -->
+          <div class="relative">
+            <input
+              type="text"
+              class="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400 text-gray-900"
+              placeholder="Search..."
+            />
+            <i class="fas fa-search absolute top-3 right-3 text-gray-400"></i>
+          </div>
+          <!-- Cart Icon -->
+          <a href="#" class="hover:text-gray-200">
+            <img src="./images/shopping-bag.png" class="w-10 h-10" alt="Cart" />
+          </a>
+          <!-- Log in Button -->
+          <a href="./login.html" class="text-white hover:text-gray-200 text-xl">
+            <button
+              class="bg-blue-700 bg-opacity-70 hover:bg-blue-950 text-white py-2 px-6 rounded-lg"
+            >
+              Log in
+            </button>
+          </a>
+        </div>
       </div>
-      <!-- Cart Icon -->
-      <a href="#" class="hover:text-gray-200">
-        <img src="./images/shopping-bag.png" class="w-10 h-10" alt="Cart" />
-      </a>
-      <!-- Log in Button -->
-      <a href="./login.html" class="text-white hover:text-gray-200 text-xl">
-        <button
-          class="bg-blue-700 bg-opacity-70 hover:bg-blue-950 text-white py-2 px-6 rounded-lg"
-        >
-          Log in
-        </button>
-      </a>
-    </div>
-  </div>
-</header>
-
+    </header>
 
     <main class="pt-24 px-4">
       <div class="container mx-auto p-4">
         <!-- Filter and Products Section -->
         <div class="flex flex-col md:flex-row gap-4">
           <!-- Filter Section -->
-          <aside class="w-full md:w-1/4 bg-white rounded-lg shadow-lg p-4">
+          <aside class="w-full md:w-1/5 bg-white rounded-lg shadow-lg p-4">
             <h2 class="font-semibold text-lg mb-4">Filters</h2>
-          
-            <!-- Price Range -->
+
             <div class="mb-4">
               <h3 class="font-semibold">Price Range</h3>
               <input type="range" class="w-full" min="0" max="1000" />
             </div>
-          
-            <!-- Size -->
+
             <div class="mb-4">
               <h3 class="font-semibold">Size</h3>
               <ul>
                 <li>
-                  <input type="radio" name="size" class="rounded-full mr-2 accent-blue-500" /> Small
+                  <input type="checkbox" class="mr-2 rounded-full" />Small
                 </li>
                 <li>
-                  <input type="radio" name="size" class="rounded-full mr-2 accent-blue-500" /> Medium
+                  <input type="checkbox" class="mr-2 rounded-full" />Medium
                 </li>
                 <li>
-                  <input type="radio" name="size" class="rounded-full mr-2 accent-blue-500" /> Large
+                  <input type="checkbox" class="mr-2 rounded-full" />Large
                 </li>
               </ul>
             </div>
-          
-            <!-- Color -->
+
             <div class="mb-4">
               <h3 class="font-semibold">Color</h3>
-              <ul>
+              <ul class="grid grid-cols-2 gap-2">
                 <li>
-                  <input type="checkbox" class="mr-2 appearance-none w-6 h-6 rounded-md bg-white border-2 border-gray-300 checked:bg-white checked:border-none"
-                    style="background-color: white;" />
-                  White
+                  <label class="color-checkbox" style="--color: white">
+                    <input type="checkbox" class="color-checkbox-input" />
+                    <span class="color-checkbox-label">White</span>
+                  </label>
                 </li>
                 <li>
-                  <input type="checkbox" class="mr-2 appearance-none w-6 h-6 rounded-md bg-black border-2 border-gray-300 checked:border-none"
-                    style="background-color: black;" />
-                  Black
+                  <label class="color-checkbox" style="--color: black">
+                    <input type="checkbox" class="color-checkbox-input" />
+                    <span class="color-checkbox-label">Black</span>
+                  </label>
                 </li>
                 <li>
-                  <input type="checkbox" class="mr-2 appearance-none w-6 h-6 rounded-md bg-blue-500 border-2 border-gray-300 checked:border-none"
-                    style="background-color: blue;" />
-                  Blue
+                  <label class="color-checkbox" style="--color: #3b82f6">
+                    <input type="checkbox" class="color-checkbox-input" />
+                    <span class="color-checkbox-label">Blue</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="color-checkbox" style="--color: #ef4444">
+                    <input type="checkbox" class="color-checkbox-input" />
+                    <span class="color-checkbox-label">Red</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="color-checkbox" style="--color: #10b981">
+                    <input type="checkbox" class="color-checkbox-input" />
+                    <span class="color-checkbox-label">Green</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="color-checkbox" style="--color: #f59e0b">
+                    <input type="checkbox" class="color-checkbox-input" />
+                    <span class="color-checkbox-label">Yellow</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="color-checkbox" style="--color: #8b5cf6">
+                    <input type="checkbox" class="color-checkbox-input" />
+                    <span class="color-checkbox-label">Purple</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="color-checkbox" style="--color: #ec4899">
+                    <input type="checkbox" class="color-checkbox-input" />
+                    <span class="color-checkbox-label">Pink</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="color-checkbox" style="--color: #6b7280">
+                    <input type="checkbox" class="color-checkbox-input" />
+                    <span class="color-checkbox-label">Gray</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="color-checkbox" style="--color: #14b8a6">
+                    <input type="checkbox" class="color-checkbox-input" />
+                    <span class="color-checkbox-label">Teal</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="color-checkbox" style="--color: #6366f1">
+                    <input type="checkbox" class="color-checkbox-input" />
+                    <span class="color-checkbox-label">Indigo</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="color-checkbox" style="--color: #f97316">
+                    <input type="checkbox" class="color-checkbox-input" />
+                    <span class="color-checkbox-label">Orange</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="color-checkbox" style="--color: #84cc16">
+                    <input type="checkbox" class="color-checkbox-input" />
+                    <span class="color-checkbox-label">Lime</span>
+                  </label>
                 </li>
               </ul>
             </div>
           </aside>
-          
 
           <!-- Product Cards Section -->
           <section
-            class="w-full md:w-3/4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+            class="w-full md:w-3/4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
           >
             <!-- Product Card 1 Start-->
             <div class="bg-white rounded-lg shadow-lg p-4">
@@ -524,7 +601,144 @@
               </div>
             </div>
             <!-- Product Card 9 End-->
-            <!-- Repeat the same for other product cards, ensuring the same class structure for each image container -->
+            <!-- Product Card 10 Start-->
+            <div class="bg-white rounded-lg shadow-lg p-4">
+              <div class="relative h-48">
+                <!-- Set a fixed height here -->
+                <img
+                  src="./images/items/men-itmes-1.jpg"
+                  alt="Product Image"
+                  class="w-full h-full object-cover rounded-lg"
+                />
+                <span
+                  class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs"
+                  >New Arrival</span
+                >
+                <button
+                  class="absolute top-2 right-2 text-gray-400 hover:text-red-500"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    class="w-6 h-6"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="mt-4">
+                <h3 class="text-lg font-semibold">Product Name</h3>
+                <p class="text-gray-500">TK 910.00</p>
+                <div class="flex gap-2 mt-4">
+                  <button
+                    class="w-1/2 bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+                  >
+                    Add to Cart
+                  </button>
+                  <button
+                    class="w-1/2 bg-gray-500 text-white py-2 rounded hover:bg-gray-600"
+                  >
+                    Full View
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Product Card 10 End-->
+            <!-- Product Card 11 Start-->
+            <div class="bg-white rounded-lg shadow-lg p-4">
+              <div class="relative h-48">
+                <!-- Set a fixed height here -->
+                <img
+                  src="./images/items/men-itmes-1.jpg"
+                  alt="Product Image"
+                  class="w-full h-full object-cover rounded-lg"
+                />
+                <span
+                  class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs"
+                  >New Arrival</span
+                >
+                <button
+                  class="absolute top-2 right-2 text-gray-400 hover:text-red-500"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    class="w-6 h-6"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="mt-4">
+                <h3 class="text-lg font-semibold">Product Name</h3>
+                <p class="text-gray-500">TK 910.00</p>
+                <div class="flex gap-2 mt-4">
+                  <button
+                    class="w-1/2 bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+                  >
+                    Add to Cart
+                  </button>
+                  <button
+                    class="w-1/2 bg-gray-500 text-white py-2 rounded hover:bg-gray-600"
+                  >
+                    Full View
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Product Card 11 End-->
+            <!-- Product Card 12 Start-->
+            <div class="bg-white rounded-lg shadow-lg p-4">
+              <div class="relative h-48">
+                <!-- Set a fixed height here -->
+                <img
+                  src="./images/items/men-itmes-1.jpg"
+                  alt="Product Image"
+                  class="w-full h-full object-cover rounded-lg"
+                />
+                <span
+                  class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs"
+                  >New Arrival</span
+                >
+                <button
+                  class="absolute top-2 right-2 text-gray-400 hover:text-red-500"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    class="w-6 h-6"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="mt-4">
+                <h3 class="text-lg font-semibold">Product Name</h3>
+                <p class="text-gray-500">TK 910.00</p>
+                <div class="flex gap-2 mt-4">
+                  <button
+                    class="w-1/2 bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+                  >
+                    Add to Cart
+                  </button>
+                  <button
+                    class="w-1/2 bg-gray-500 text-white py-2 rounded hover:bg-gray-600"
+                  >
+                    Full View
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Product Card 12 End-->
           </section>
         </div>
       </div>
