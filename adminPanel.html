@@ -3,131 +3,143 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Clothing Store Admin Panel</title>
+    <title>Admin Panel</title>
+
     <link rel="stylesheet" href="./output/tailwind.css" />
   </head>
-  <body class="bg-gray-100">
-    <div class="flex flex-col md:flex-row h-screen">
-      <!-- Sidebar -->
-      <aside class="w-full md:w-64 bg-slate-800 shadow-lg md:block">
-        <div class="p-4 md:p-6">
-          <h2 class="text-lg md:text-2xl font-semibold text-gray-50">
-            Admin Panel
-          </h2>
-        </div>
-        <nav class="mt-4 md:mt-8">
+  <body class="bg-gray-100 font-sans">
+    <!-- Sidebar -->
+    <div class="flex">
+      <aside class="w-64 bg-slate-800 text-white min-h-screen p-4">
+        <h2 class="text-2xl font-semibold mb-6">Admin Panel</h2>
+        <nav>
           <ul>
-            <li class="p-4 text-white hover:bg-slate-600 cursor-pointer">
-              Dashboard
+            <li class="mb-4">
+              <a
+                href="#"
+                class="flex items-center gap-3 p-3 rounded-md bg-blue-800"
+              >
+                <span>🏠</span>
+                <span>Dashboard</span>
+              </a>
             </li>
-            <li class="p-4 text-white hover:bg-slate-600 cursor-pointer">
-              Orders
+            <li class="mb-4">
+              <a
+                href="#"
+                class="flex items-center gap-3 p-3 rounded-md hover:bg-blue-800"
+              >
+                <span>📦</span>
+                <span>Order Management</span>
+              </a>
             </li>
-            <li class="p-4 text-white hover:bg-slate-600 cursor-pointer">
-              Products
+            <li class="mb-4">
+              <a
+                href="#"
+                class="flex items-center gap-3 p-3 rounded-md hover:bg-blue-800"
+              >
+                <span>🏬</span>
+                <span>Inventory</span>
+              </a>
             </li>
-            <li class="p-4 text-white hover:bg-slate-600 cursor-pointer">
-              Customers
+            <li class="mb-4">
+              <a
+                href="#"
+                class="flex items-center gap-3 p-3 rounded-md hover:bg-blue-800"
+              >
+                <span>📁</span>
+                <span>Category Management</span>
+              </a>
             </li>
-            <li class="p-4 text-white hover:bg-slate-600 cursor-pointer">
-              Analytics
+            <li class="mb-4">
+              <a
+                href="#"
+                class="flex items-center gap-3 p-3 rounded-md hover:bg-blue-800"
+              >
+                <span>👤</span>
+                <span>User Management</span>
+              </a>
             </li>
-            <li class="p-4 text-white hover:bg-slate-600 cursor-pointer">
-              Settings
+            <li class="mb-4">
+              <a
+                href="#"
+                class="flex items-center gap-3 p-3 rounded-md hover:bg-blue-800"
+              >
+                <span>👥</span>
+                <span>Vendor Management</span>
+              </a>
+            </li>
+            <li class="mb-4">
+              <a
+                href="#"
+                class="flex items-center gap-3 p-3 rounded-md hover:bg-blue-800"
+              >
+                <span>💻</span>
+                <span>Site Management</span>
+              </a>
             </li>
           </ul>
         </nav>
+        <div class="mt-auto">
+          <button class="w-full bg-blue-700 text-white py-2 rounded-md mt-6">
+            Log Out
+          </button>
+          <p class="text-center mt-4 text-sm">Developed by Joy Tarafder</p>
+        </div>
       </aside>
 
       <!-- Main Content -->
-      <main class="flex-1 p-4 md:p-6">
-        <!-- Header -->
-        <header class="flex items-center justify-between flex-wrap">
-          <h1 class="text-2xl md:text-3xl font-semibold">Dashboard</h1>
-          <div class="mt-2 md:mt-0">
-            <button>
-              <img
-                src="./images/logout.png"
-                alt="Logout"
-                class="w-6 h-6 md:w-7 md:h-7"
-              />
-            </button>
-          </div>
-        </header>
+      <main class="flex-1 p-6">
+        <h1 class="text-3xl font-semibold mb-6">Dashboard</h1>
 
-        <!-- Overview Stats -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-6">
-          <div class="bg-white p-3 md:p-4 rounded-lg shadow-md text-center">
-            <h2 class="text-gray-600 text-sm md:text-base">Total Sales</h2>
-            <div
-              class="text-xl md:text-2xl font-semibold flex justify-center gap-2"
-            >
-              <img
-                src="./images/bangladeshi-taka-sign.png"
-                class="w-4 h-4 md:w-5 md:h-5 mt-2"
-              />
-              895.88
+        <!-- Order Management Section -->
+        <section class="mb-8">
+          <h2 class="text-xl font-semibold mb-4">Order Management</h2>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="p-4 bg-white rounded-lg shadow">
+              <h3 class="text-gray-700">Delivered Orders</h3>
+              <p class="text-blue-500 text-2xl font-bold">৳0.00</p>
+            </div>
+            <div class="p-4 bg-white rounded-lg shadow">
+              <h3 class="text-gray-700">Canceled Orders</h3>
+              <p class="text-red-500 text-2xl font-bold">৳0.00</p>
+            </div>
+            <div class="p-4 bg-white rounded-lg shadow">
+              <h3 class="text-gray-700">Processing Orders</h3>
+              <p class="text-green-500 text-2xl font-bold">৳0.00</p>
+            </div>
+            <div class="p-4 bg-white rounded-lg shadow">
+              <h3 class="text-gray-700">Pending Orders</h3>
+              <p class="text-purple-500 text-2xl font-bold">৳0.00</p>
             </div>
           </div>
-          <div class="bg-white p-3 md:p-4 rounded-lg shadow-md text-center">
-            <h2 class="text-gray-600 text-sm md:text-base">
-              Available Products
-            </h2>
-            <p class="text-xl md:text-2xl font-semibold">158</p>
-          </div>
-          <div class="bg-white p-3 md:p-4 rounded-lg shadow-md text-center">
-            <h2 class="text-gray-600 text-sm md:text-base">Total Orders</h2>
-            <p class="text-xl md:text-2xl font-semibold">420</p>
-          </div>
-          <div class="bg-white p-3 md:p-4 rounded-lg shadow-md text-center">
-            <h2 class="text-gray-600 text-sm md:text-base">
-              Customer Experience
-            </h2>
-            <p class="text-xl md:text-2xl font-semibold">27</p>
-          </div>
-        </div>
+        </section>
 
-        <!-- Sales Performance Graph (Placeholder) -->
-        <div class="bg-white mt-6 p-4 md:p-6 rounded-lg shadow-md">
-          <h2 class="text-lg md:text-xl font-semibold">Sales Performance</h2>
-          <div class="mt-4">
-            <!-- Placeholder for chart -->
-            <div class="h-40 md:h-64 bg-gray-200 rounded-lg"></div>
+        <!-- Inventory Section -->
+        <section>
+          <h2 class="text-xl font-semibold mb-4">Inventory</h2>
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <div class="p-4 bg-white rounded-lg shadow">
+              <h3 class="text-gray-700">Low on Stock</h3>
+              <p class="text-red-500 text-2xl font-bold">৳0.00</p>
+            </div>
+            <div class="p-4 bg-white rounded-lg shadow">
+              <h3 class="text-gray-700">Product Added</h3>
+              <p class="text-blue-500 text-2xl font-bold">৳2,500.00</p>
+            </div>
+            <div class="p-4 bg-white rounded-lg shadow">
+              <h3 class="text-gray-700">Out of Stock</h3>
+              <p class="text-red-500 text-2xl font-bold">৳25.00</p>
+            </div>
+            <div class="p-4 bg-white rounded-lg shadow">
+              <h3 class="text-gray-700">Low on Stock</h3>
+              <p class="text-red-500 text-2xl font-bold">৳0.00</p>
+            </div>
+            <div class="p-4 bg-white rounded-lg shadow">
+              <h3 class="text-gray-700">Avg Order/day</h3>
+              <p class="text-green-500 text-2xl font-bold">৳0.00</p>
+            </div>
           </div>
-        </div>
-
-        <!-- Recent Orders and Notifications -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-6">
-          <!-- Recent Orders -->
-          <div class="bg-white p-4 rounded-lg shadow-md">
-            <h2 class="text-lg md:text-xl font-semibold mb-4">Recent Orders</h2>
-            <ul>
-              <li class="flex justify-between mb-2 text-sm md:text-base">
-                <span>#96v4r5 - 2 Items</span>
-                <span class="text-yellow-500">Pending</span>
-              </li>
-              <li class="flex justify-between mb-2 text-sm md:text-base">
-                <span>#568gf8 - 4 Items</span>
-                <span class="text-green-500">Delivered</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Notifications -->
-          <div class="bg-white p-4 rounded-lg shadow-md">
-            <h2 class="text-lg md:text-xl font-semibold mb-4">Notifications</h2>
-            <ul>
-              <li class="flex justify-between mb-2 text-sm md:text-base">
-                <span>Your product is out of stock</span>
-                <span class="text-gray-500">Oct 9</span>
-              </li>
-              <li class="flex justify-between mb-2 text-sm md:text-base">
-                <span>Last request for settlement</span>
-                <span class="text-gray-500">Oct 3</span>
-              </li>
-            </ul>
-          </div>
-        </div>
+        </section>
       </main>
     </div>
   </body>
