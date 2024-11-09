@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Management</title>
+    <link rel="stylesheet" href="./output/tailwind.css" />
+  </head>
+  <body class="bg-gray-100 font-sans">
+    <div class="flex">
+      <!-- Sidebar -->
+      <aside
+        class="fixed top-0 left-0 w-64 bg-slate-800 text-white h-screen p-4 overflow-y-auto hidden lg:block"
+      >
+        <h2 class="text-2xl font-semibold mb-6">Admin Panel</h2>
+        <nav>
+          <ul>
+            <li>
+              <a
+                href="adminPanel.html"
+                id="dashboard-link"
+                class="sidebar-link block py-2.5 px-4 rounded transition duration-200"
+                >Dashboard</a
+              >
+            </li>
+            <li>
+              <a
+                href="orderManagement.html"
+                id="order-management-link"
+                class="sidebar-link block py-2.5 px-4 rounded transition duration-200"
+                >Order Management</a
+              >
+            </li>
+            <li>
+              <a
+                href="inventory.html"
+                id="inventory-link"
+                class="sidebar-link block py-2.5 px-4 rounded transition duration-200"
+                >Inventory</a
+              >
+            </li>
+            <li>
+              <a
+                href="categoryManagement.html"
+                id="category-management-link"
+                class="sidebar-link block py-2.5 px-4 rounded transition duration-200"
+                >Category Management</a
+              >
+            </li>
+            <li>
+              <a
+                href="userManagement.html"
+                id="user-management-link"
+                class="sidebar-link block py-2.5 px-4 rounded transition duration-200"
+                >User Management</a
+              >
+            </li>
+            <li>
+              <a
+                href="vendorManagement.html"
+                id="vendor-management-link"
+                class="sidebar-link block py-2.5 px-4 rounded transition duration-200"
+                >Vendor Management</a
+              >
+            </li>
+            <li>
+              <a
+                href="siteManagement.html"
+                id="site-management-link"
+                class="sidebar-link block py-2.5 px-4 rounded transition duration-200"
+                >Site Management</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <div class="mt-44">
+          <button class="w-full bg-blue-700 text-white py-2 rounded-md mt-6">
+            Log Out
+          </button>
+          <p class="text-center mt-4 text-sm">Developed by Joy Tarafder</p>
+        </div>
+      </aside>
+
+      <!-- Mobile Sidebar Toggle -->
+      <div class="lg:hidden fixed top-4 left-4 z-50">
+        <button id="menu-toggle" class="text-white bg-blue-600 p-2 rounded-lg">
+          ☰
+        </button>
+      </div>
+
+      <!-- Main Content -->
+      <div class="flex-1 lg:ml-64 p-6">
+        <h2 class="text-2xl font-bold mb-4">Order Management</h2>
+
+        <!-- Order Summary -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          <div class="bg-white p-4 rounded-lg shadow text-center">
+            <h3 class="text-lg font-semibold">Pending</h3>
+            <p class="text-2xl">0</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow text-center">
+            <h3 class="text-lg font-semibold">Processing</h3>
+            <p class="text-2xl">0</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow text-center">
+            <h3 class="text-lg font-semibold">Out for Delivery</h3>
+            <p class="text-2xl">0</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow text-center">
+            <h3 class="text-lg font-semibold">Completed</h3>
+            <p class="text-2xl">0</p>
+          </div>
+        </div>
+
+        <!-- Pending Orders Section -->
+        <div class="bg-white p-6 rounded-lg shadow mb-6">
+          <h3 class="text-xl font-semibold mb-4 text-center">Pending Orders</h3>
+          <div class="flex flex-col md:flex-row gap-4 mb-4">
+            <div class="flex-1">
+              <label class="block text-sm font-medium mb-2">Start Date</label>
+              <input type="date" class="w-full p-2 border rounded-lg" />
+            </div>
+            <div class="flex-1">
+              <label class="block text-sm font-medium mb-2">End Date</label>
+              <input type="date" class="w-full p-2 border rounded-lg" />
+            </div>
+            <button class="text-white px-4 py-2 bg-blue-600 rounded-lg">
+              🔍 Search
+            </button>
+          </div>
+          <p class="text-center text-gray-500">No Pending Orders found</p>
+        </div>
+        <!-- Pending Orders Section -->
+        <div class="bg-white p-6 rounded-lg shadow mb-6">
+          <h3 class="text-xl font-semibold mb-4 text-center">Pending Orders</h3>
+          <div class="flex flex-col md:flex-row gap-4 mb-4">
+            <div class="flex-1">
+              <label class="block text-sm font-medium mb-2">Start Date</label>
+              <input type="date" class="w-full p-2 border rounded-lg" />
+            </div>
+            <div class="flex-1">
+              <label class="block text-sm font-medium mb-2">End Date</label>
+              <input type="date" class="w-full p-2 border rounded-lg" />
+            </div>
+            <button class="text-white px-4 py-2 bg-blue-600 rounded-lg">
+              🔍 Search
+            </button>
+          </div>
+          <p class="text-center text-gray-500">No Pending Orders found</p>
+        </div>
+        <!-- Pending Orders Section -->
+        <div class="bg-white p-6 rounded-lg shadow mb-6">
+          <h3 class="text-xl font-semibold mb-4 text-center">Pending Orders</h3>
+          <div class="flex flex-col md:flex-row gap-4 mb-4">
+            <div class="flex-1">
+              <label class="block text-sm font-medium mb-2">Start Date</label>
+              <input type="date" class="w-full p-2 border rounded-lg" />
+            </div>
+            <div class="flex-1">
+              <label class="block text-sm font-medium mb-2">End Date</label>
+              <input type="date" class="w-full p-2 border rounded-lg" />
+            </div>
+            <button class="text-white px-4 py-2 bg-blue-600 rounded-lg">
+              🔍 Search
+            </button>
+          </div>
+          <p class="text-center text-gray-500">No Pending Orders found</p>
+        </div>
+        <!-- Pending Orders Section -->
+        <div class="bg-white p-6 rounded-lg shadow mb-6">
+          <h3 class="text-xl font-semibold mb-4 text-center">Pending Orders</h3>
+          <div class="flex flex-col md:flex-row gap-4 mb-4">
+            <div class="flex-1">
+              <label class="block text-sm font-medium mb-2">Start Date</label>
+              <input type="date" class="w-full p-2 border rounded-lg" />
+            </div>
+            <div class="flex-1">
+              <label class="block text-sm font-medium mb-2">End Date</label>
+              <input type="date" class="w-full p-2 border rounded-lg" />
+            </div>
+            <button class="text-white px-4 py-2 bg-blue-600 rounded-lg">
+              🔍 Search
+            </button>
+          </div>
+          <p class="text-center text-gray-500">No Pending Orders found</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // JavaScript for mobile sidebar toggle
+      const menuToggle = document.getElementById("menu-toggle");
+      const sidebar = document.querySelector("aside");
+
+      menuToggle.addEventListener("click", () => {
+        sidebar.classList.toggle("hidden");
+      });
+
+      // JavaScript to set active state on menu click
+      function setActive(element) {
+        const sidebarLinks = document.querySelectorAll(".sidebar-link");
+        sidebarLinks.forEach((link) =>
+          link.classList.remove("bg-blue-800", "active")
+        );
+        element.classList.add("bg-blue-800", "active");
+      }
+
+      // Set the active link based on the current page
+      document.addEventListener("DOMContentLoaded", function () {
+        const currentPage = window.location.pathname.split("/").pop();
+        const linkMap = {
+          "dashboard.html": "dashboard-link",
+          "orderManagement.html": "order-management-link",
+          "inventory.html": "inventory-link",
+          "categoryManagement.html": "category-management-link",
+          "userManagement.html": "user-management-link",
+          "vendorManagement.html": "vendor-management-link",
+          "siteManagement.html": "site-management-link",
+        };
+        const activeLinkId = linkMap[currentPage];
+        if (activeLinkId) {
+          const activeLink = document.getElementById(activeLinkId);
+          if (activeLink) {
+            setActive(activeLink);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
