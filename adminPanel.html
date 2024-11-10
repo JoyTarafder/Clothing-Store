@@ -8,136 +8,138 @@
     <link rel="stylesheet" href="./output/tailwind.css" />
   </head>
   <body class="bg-gray-100 font-sans">
-    <!-- Sidebar -->
-    <aside
-      class="fixed top-0 left-0 w-64 bg-slate-800 text-white min-h-screen p-4"
-    >
-      <h2 class="text-2xl font-semibold mb-6">Admin Panel</h2>
-      <nav id="sidebar">
-        <ul>
-          <li>
-            <a
-              href="adminPanel.html"
-              id="dashboard-link"
-              class="sidebar-link block py-2.5 px-4 rounded transition duration-200"
-              >Dashboard</a
-            >
-          </li>
-          <li>
-            <a
-              href="orderManagement.html"
-              id="order-management-link"
-              class="sidebar-link block py-2.5 px-4 rounded transition duration-200"
-              >Order Management</a
-            >
-          </li>
-          <li>
-            <a
-              href="inventory.html"
-              id="inventory-link"
-              class="sidebar-link block py-2.5 px-4 rounded transition duration-200"
-              >Inventory</a
-            >
-          </li>
-          <li>
-            <a
-              href="categoryManagement.html"
-              id="category-management-link"
-              class="sidebar-link block py-2.5 px-4 rounded transition duration-200"
-              >Category Management</a
-            >
-          </li>
-          <li>
-            <a
-              href="userManagement.html"
-              id="user-management-link"
-              class="sidebar-link block py-2.5 px-4 rounded transition duration-200"
-              >User Management</a
-            >
-          </li>
-          <li>
-            <a
-              href="vendorManagement.html"
-              id="vendor-management-link"
-              class="sidebar-link block py-2.5 px-4 rounded transition duration-200"
-              >Vendor Management</a
-            >
-          </li>
-          <li>
-            <a
-              href="siteManagement.html"
-              id="site-management-link"
-              class="sidebar-link block py-2.5 px-4 rounded transition duration-200"
-              >Site Management</a
-            >
-          </li>
-        </ul>
-      </nav>
-      <div class="mt-44">
-        <button class="w-full bg-blue-700 text-white py-2 rounded-md mt-6">
-          Log Out
-        </button>
-        <p class="text-center mt-4 text-sm">Developed by Joy Tarafder</p>
-      </div>
-    </aside>
+    <div class="flex">
+      <!-- Sidebar -->
+      <aside
+        class="fixed top-0 left-0 w-64 bg-slate-800 text-white min-h-screen p-4"
+      >
+        <h2 class="text-2xl font-semibold mb-6">Admin Panel</h2>
+        <nav id="sidebar">
+          <ul>
+            <li>
+              <a
+                href="adminPanel.html"
+                id="dashboard-link"
+                class="sidebar-link block py-2.5 px-4 rounded transition duration-200"
+                >Dashboard</a
+              >
+            </li>
+            <li>
+              <a
+                href="orderManagement.html"
+                id="order-management-link"
+                class="sidebar-link block py-2.5 px-4 rounded transition duration-200"
+                >Order Management</a
+              >
+            </li>
+            <li>
+              <a
+                href="inventory.html"
+                id="inventory-link"
+                class="sidebar-link block py-2.5 px-4 rounded transition duration-200"
+                >Inventory</a
+              >
+            </li>
+            <li>
+              <a
+                href="categoryManagement.html"
+                id="category-management-link"
+                class="sidebar-link block py-2.5 px-4 rounded transition duration-200"
+                >Category Management</a
+              >
+            </li>
+            <li>
+              <a
+                href="userManagement.html"
+                id="user-management-link"
+                class="sidebar-link block py-2.5 px-4 rounded transition duration-200"
+                >User Management</a
+              >
+            </li>
+            <li>
+              <a
+                href="vendorManagement.html"
+                id="vendor-management-link"
+                class="sidebar-link block py-2.5 px-4 rounded transition duration-200"
+                >Vendor Management</a
+              >
+            </li>
+            <li>
+              <a
+                href="siteManagement.html"
+                id="site-management-link"
+                class="sidebar-link block py-2.5 px-4 rounded transition duration-200"
+                >Site Management</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <div class="mt-44">
+          <button class="w-full bg-blue-700 text-white py-2 rounded-md mt-6">
+            Log Out
+          </button>
+          <p class="text-center mt-4 text-sm">Developed by Joy Tarafder</p>
+        </div>
+      </aside>
 
-    <!-- Main Content -->
-    <main class="md:ml-64 p-6 overflow-auto h-screen">
-      <h1 class="text-3xl font-semibold mb-6">Dashboard</h1>
+      <!-- Main Content -->
+      <main class="md:ml-64 p-6 overflow-auto h-screen">
+        <h1 class="text-3xl font-semibold mb-6">Dashboard</h1>
 
-      <!-- Order Management Section -->
-      <section id="orderManagement" class="mb-8">
-        <h2 class="text-xl font-semibold mb-4">Order Management</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <!-- Order Chart Placeholder -->
+        <!-- Order Management Section -->
+        <section id="orderManagement" class="mb-8">
+          <h2 class="text-xl font-semibold mb-4">Order Management</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Order Chart Placeholder -->
+            <div class="p-4 bg-white rounded-lg shadow">
+              <h3 class="text-gray-700 mb-4">Order Chart this Month</h3>
+              <div class="flex justify-center items-center">
+                <img
+                  src="order-chart-placeholder.png"
+                  alt="Order Chart"
+                  class="w-40 h-40"
+                />
+              </div>
+            </div>
+
+            <!-- Order Stats -->
+            <div class="flex">
+              <div class="p-4 bg-white rounded-lg shadow">
+                <h3 class="text-gray-700">Delivered Orders</h3>
+                <p class="text-blue-500 text-2xl font-bold">৳0.00</p>
+              </div>
+              <div class="p-4 bg-white rounded-lg shadow">
+                <h3 class="text-gray-700">Canceled Orders</h3>
+                <p class="text-red-500 text-2xl font-bold">৳0.00</p>
+              </div>
+              <div class="p-4 bg-white rounded-lg shadow">
+                <h3 class="text-gray-700">Processing Orders</h3>
+                <p class="text-green-500 text-2xl font-bold">৳0.00</p>
+              </div>
+              <div class="p-4 bg-white rounded-lg shadow">
+                <h3 class="text-gray-700">Pending Orders</h3>
+                <p class="text-purple-500 text-2xl font-bold">৳0.00</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Low on Stock Chart Section -->
+        <section>
+          <h2 class="text-xl font-semibold mb-4">Low on Stock</h2>
           <div class="p-4 bg-white rounded-lg shadow">
-            <h3 class="text-gray-700 mb-4">Order Chart this Month</h3>
+            <h3 class="text-gray-700 mb-4">Low on Stock Chart</h3>
             <div class="flex justify-center items-center">
               <img
-                src="order-chart-placeholder.png"
-                alt="Order Chart"
+                src="low-stock-chart-placeholder.png"
+                alt="Low on Stock Chart"
                 class="w-40 h-40"
               />
             </div>
           </div>
-
-          <!-- Order Stats -->
-          <div class="flex">
-            <div class="p-4 bg-white rounded-lg shadow">
-              <h3 class="text-gray-700">Delivered Orders</h3>
-              <p class="text-blue-500 text-2xl font-bold">৳0.00</p>
-            </div>
-            <div class="p-4 bg-white rounded-lg shadow">
-              <h3 class="text-gray-700">Canceled Orders</h3>
-              <p class="text-red-500 text-2xl font-bold">৳0.00</p>
-            </div>
-            <div class="p-4 bg-white rounded-lg shadow">
-              <h3 class="text-gray-700">Processing Orders</h3>
-              <p class="text-green-500 text-2xl font-bold">৳0.00</p>
-            </div>
-            <div class="p-4 bg-white rounded-lg shadow">
-              <h3 class="text-gray-700">Pending Orders</h3>
-              <p class="text-purple-500 text-2xl font-bold">৳0.00</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Low on Stock Chart Section -->
-      <section>
-        <h2 class="text-xl font-semibold mb-4">Low on Stock</h2>
-        <div class="p-4 bg-white rounded-lg shadow">
-          <h3 class="text-gray-700 mb-4">Low on Stock Chart</h3>
-          <div class="flex justify-center items-center">
-            <img
-              src="low-stock-chart-placeholder.png"
-              alt="Low on Stock Chart"
-              class="w-40 h-40"
-            />
-          </div>
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
+    </div>
 
     <script>
       // JavaScript to set active state on menu click
