@@ -3,27 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Women</title>
+    <title>Men</title>
     <link rel="stylesheet" href="./output/tailwind.css" />
+    <link rel="stylesheet" href="./src/tailwind.css" />
   </head>
-  <body class="bg-teal-900">
-    <!-- Navbar on top of hero image -->
-    <header class="absolute top-0 w-full z-20">
+  <body class="bg-gray-300 text-gray-900">
+    <!-- Navbar on top -->
+    <header
+      class="fixed top-0 w-full z-20 bg-teal-900 bg-opacity-50 backdrop-blur-md shadow-lg"
+    >
       <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center mt-7"
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center"
       >
         <!-- Logo -->
-        <a href="./index.html" class="text-5xl font-bold text-white">Logo</a>
+        <a href="./index.html" class="text-3xl font-bold text-white">Logo</a>
 
         <!-- Menu -->
         <nav class="space-x-6 hidden md:flex">
-          <a href="./men.html" class="text-white hover:text-indigo-200 text-xl">Men</a>
-          <a href="./women.html" class="text-white hover:text-indigo-200 text-xl">Women</a>
-          <a href="./kids.html" class="text-white hover:text-indigo-200 text-xl">Kids</a>
-          <a href="./newArrival.html" class="text-white hover:text-indigo-200 text-xl"
+          <a href="./men.html" class="text-white hover:text-indigo-200 text-xl"
+            >Men</a
+          >
+          <a
+            href="./women.html"
+            class="text-white hover:text-indigo-200 text-xl"
+            >Women</a
+          >
+          <a href="./kids.html" class="text-white hover:text-indigo-200 text-xl"
+            >Kids</a
+          >
+          <a
+            href="./newArrival.html"
+            class="text-white hover:text-indigo-200 text-xl"
             >NEW ARRIVAL</a
           >
-          <a href="./sales.html" class="text-white hover:text-indigo-200 text-xl">Sales</a>
+          <a
+            href="./sales.html"
+            class="text-white hover:text-indigo-200 text-xl"
+            >Sales</a
+          >
         </nav>
 
         <!-- Search Box, Cart Icon, Login -->
@@ -37,31 +54,695 @@
             />
             <i class="fas fa-search absolute top-3 right-3 text-gray-400"></i>
           </div>
-          <!-- Dark Mode Icon -->
-          <!-- <a href="#" class="hover:text-gray-200">
-              <img src="./images/dark-mode.png" class="w-6 h-6" alt="" />
-            </a> -->
           <!-- Cart Icon -->
           <a href="#" class="hover:text-gray-200">
-            <img src="./images/shopping-bag.png" class="w-10 h-10" alt="" />
+            <img src="./images/shopping-bag.png" class="w-10 h-10" alt="Cart" />
           </a>
-          <!-- Log in -->
-          <a href="./login.html" class="text-white hover:text-gray-200 text-xl"
-            ><button
-              type="button"
-              aria-disabled="false"
-              class="group inline-flex items-center justify-center whitespace-nowrap rounded-lg py-2 align-middle text-sm font-semibold leading-none transition-all duration-300 ease-in-out disabled:cursor-not-allowed bg-blue-700 stroke-white px-6 text-white hover:bg-blue-950 h-[42px] min-w-[42px] gap-2 disabled:bg-slate-100 disabled:stroke-slate-400 disabled:text-slate-400 disabled:hover:bg-slate-100"
+          <!-- Log in Button -->
+          <a href="./login.html" class="text-white hover:text-gray-200 text-xl">
+            <button
+              class="bg-blue-700 bg-opacity-70 hover:bg-blue-950 text-white py-2 px-6 rounded-lg"
             >
-              <div>Log in</div>
-            </button></a
-          >
+              Log in
+            </button>
+          </a>
         </div>
       </div>
     </header>
 
-    <main>
-      <div class="text-center text-5xl mt-80 mb-96 text-white">
-        New ARRIVAL  Products Under Construction
+    <main class="pt-24 px-4">
+      <div class="container mx-auto p-4">
+        <!-- Filter and Products Section -->
+        <div class="flex flex-col md:flex-row gap-4">
+          <!-- Filter Section -->
+          <aside class="w-full md:w-1/5 bg-white rounded-lg shadow-lg p-4">
+            <h2 class="font-semibold text-lg mb-4">Filters</h2>
+
+            <div class="mb-4">
+              <h3 class="font-semibold">Price Range</h3>
+              <input type="range" class="w-full" min="0" max="1000" />
+            </div>
+
+            <div class="mb-4">
+              <h3 class="font-semibold">Size</h3>
+              <ul>
+                <li>
+                  <input type="checkbox" class="mr-2 rounded-full" />Small
+                </li>
+                <li>
+                  <input type="checkbox" class="mr-2 rounded-full" />Medium
+                </li>
+                <li>
+                  <input type="checkbox" class="mr-2 rounded-full" />Large
+                </li>
+              </ul>
+            </div>
+
+            <div class="mb-4">
+              <h3 class="font-semibold">Color</h3>
+              <ul class="grid grid-cols-2 gap-2">
+                <li>
+                  <label class="color-checkbox" style="--color: white">
+                    <input type="checkbox" class="color-checkbox-input" />
+                    <span class="color-checkbox-label">White</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="color-checkbox" style="--color: black">
+                    <input type="checkbox" class="color-checkbox-input" />
+                    <span class="color-checkbox-label">Black</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="color-checkbox" style="--color: #3b82f6">
+                    <input type="checkbox" class="color-checkbox-input" />
+                    <span class="color-checkbox-label">Blue</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="color-checkbox" style="--color: #ef4444">
+                    <input type="checkbox" class="color-checkbox-input" />
+                    <span class="color-checkbox-label">Red</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="color-checkbox" style="--color: #10b981">
+                    <input type="checkbox" class="color-checkbox-input" />
+                    <span class="color-checkbox-label">Green</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="color-checkbox" style="--color: #f59e0b">
+                    <input type="checkbox" class="color-checkbox-input" />
+                    <span class="color-checkbox-label">Yellow</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="color-checkbox" style="--color: #8b5cf6">
+                    <input type="checkbox" class="color-checkbox-input" />
+                    <span class="color-checkbox-label">Purple</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="color-checkbox" style="--color: #ec4899">
+                    <input type="checkbox" class="color-checkbox-input" />
+                    <span class="color-checkbox-label">Pink</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="color-checkbox" style="--color: #6b7280">
+                    <input type="checkbox" class="color-checkbox-input" />
+                    <span class="color-checkbox-label">Gray</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="color-checkbox" style="--color: #14b8a6">
+                    <input type="checkbox" class="color-checkbox-input" />
+                    <span class="color-checkbox-label">Teal</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="color-checkbox" style="--color: #6366f1">
+                    <input type="checkbox" class="color-checkbox-input" />
+                    <span class="color-checkbox-label">Indigo</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="color-checkbox" style="--color: #f97316">
+                    <input type="checkbox" class="color-checkbox-input" />
+                    <span class="color-checkbox-label">Orange</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="color-checkbox" style="--color: #84cc16">
+                    <input type="checkbox" class="color-checkbox-input" />
+                    <span class="color-checkbox-label">Lime</span>
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </aside>
+
+          <!-- Product Cards Section -->
+          <section
+            class="w-full md:w-3/4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+          >
+            <!-- Product Card 1 Start-->
+            <div class="bg-white rounded-lg shadow-lg p-4">
+              <div class="relative h-48 overflow-hidden">
+                <!-- Add overflow-hidden to prevent the image from going out of bounds -->
+                <img
+                  src="https://cdn.shopify.com/s/files/1/0266/6276/4597/files/formal_shirts_for_men_n.jpg?v=1677133017"
+                  alt="Product Image"
+                  class="w-full h-full object-cover rounded-lg transform transition-transform duration-300 hover:scale-110"
+                />
+                <span
+                  class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs"
+                >
+                  New Arrival
+                </span>
+                <button
+                  class="absolute top-2 right-2 text-gray-400 hover:text-red-500"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    class="w-6 h-6"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="mt-4">
+                <h3 class="text-lg font-semibold">Mens Formals</h3>
+                <p class="text-gray-500">TK 2910.00</p>
+                <div class="flex gap-2 mt-4">
+                  <button
+                    class="w-1/2 bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+                  >
+                    Add to Cart
+                  </button>
+                  <button
+                    class="w-1/2 bg-gray-500 text-white py-2 rounded hover:bg-gray-600"
+                  >
+                    Full View
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Card 1 End-->
+            <!-- Product Card 2 Start-->
+            <div class="bg-white rounded-lg shadow-lg p-4">
+              <div class="relative h-48">
+                <!-- Set a fixed height here -->
+                <img
+                  src="https://www.vishalprints.in/cdn/shop/files/TEEJ_3-50717-01_09e5c4b3-0aec-4874-907f-0f7c4828c9ab.jpg?v=1723204113"
+                  alt="Product Image"
+                  class="w-full h-full object-cover rounded-lg transform transition-transform duration-300 hover:scale-110"
+                />
+                <span
+                  class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs"
+                  >New Arrival</span
+                >
+                <button
+                  class="absolute top-2 right-2 text-gray-400 hover:text-red-500"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    class="w-6 h-6"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="mt-4">
+                <h3 class="text-lg font-semibold">Vishal Prints Dark Green</h3>
+                <p class="text-gray-500">TK 1590.00</p>
+                <div class="flex gap-2 mt-4">
+                  <button
+                    class="w-1/2 bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+                  >
+                    Add to Cart
+                  </button>
+                  <button
+                    class="w-1/2 bg-gray-500 text-white py-2 rounded hover:bg-gray-600"
+                  >
+                    Full View
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Product Card 2 End-->
+            <!-- Product Card 3 Start-->
+            <div class="bg-white rounded-lg shadow-lg p-4">
+              <div class="relative h-48">
+                <!-- Set a fixed height here -->
+                <img
+                  src="https://johnwatson.in/cdn/shop/products/Pro-CaptureOne9964.jpg?v=1679566811&width=1155"
+                  alt="Product Image"
+                  class="w-full h-full object-cover rounded-lg transform transition-transform duration-300 hover:scale-110"
+                />
+                <span
+                  class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs"
+                  >New Arrival</span
+                >
+                <button
+                  class="absolute top-2 right-2 text-gray-400 hover:text-red-500"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    class="w-6 h-6"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="mt-4">
+                <h3 class="text-lg font-semibold">Formals - Blue</h3>
+                <p class="text-gray-500">TK 3910.00</p>
+                <div class="flex gap-2 mt-4">
+                  <button
+                    class="w-1/2 bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+                  >
+                    Add to Cart
+                  </button>
+                  <button
+                    class="w-1/2 bg-gray-500 text-white py-2 rounded hover:bg-gray-600"
+                  >
+                    Full View
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Product Card 3 End-->
+            <!-- Product Card 4 Start-->
+            <div class="bg-white rounded-lg shadow-lg p-4">
+              <div class="relative h-48">
+                <!-- Set a fixed height here -->
+                <img
+                  src="https://turtle.in/cdn/shop/files/TURTLE2012_1080x.jpg?v=1713261421"
+                  alt="Product Image"
+                  class="w-full h-full object-cover rounded-lg transform transition-transform duration-300 hover:scale-110"
+                />
+                <span
+                  class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs"
+                  >New Arrival</span
+                >
+                <button
+                  class="absolute top-2 right-2 text-gray-400 hover:text-red-500"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    class="w-6 h-6"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="mt-4">
+                <h3 class="text-lg font-semibold">Wedding Outfits</h3>
+                <p class="text-gray-500">TK 3910.00</p>
+                <div class="flex gap-2 mt-4">
+                  <button
+                    class="w-1/2 bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+                  >
+                    Add to Cart
+                  </button>
+                  <button
+                    class="w-1/2 bg-gray-500 text-white py-2 rounded hover:bg-gray-600"
+                  >
+                    Full View
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Product Card 4 End-->
+            <!-- Product Card 5 Start-->
+            <div class="bg-white rounded-lg shadow-lg p-4">
+              <div class="relative h-48">
+                <!-- Set a fixed height here -->
+                <img
+                  src="https://www.vishalprints.in/cdn/shop/files/JHANVI-42245-01_383dac56-6037-4c8d-8e6b-e55708068582.jpg?v=1719141760"
+                  alt="Product Image"
+                  class="w-full h-full object-cover rounded-lg transform transition-transform duration-300 hover:scale-110"
+                />
+                <span
+                  class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs"
+                  >New Arrival</span
+                >
+                <button
+                  class="absolute top-2 right-2 text-gray-400 hover:text-red-500"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    class="w-6 h-6"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="mt-4">
+                <h3 class="text-lg font-semibold">Vishal Prints Mustard</h3>
+                <p class="text-gray-500">TK 2910.00</p>
+                <div class="flex gap-2 mt-4">
+                  <button
+                    class="w-1/2 bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+                  >
+                    Add to Cart
+                  </button>
+                  <button
+                    class="w-1/2 bg-gray-500 text-white py-2 rounded hover:bg-gray-600"
+                  >
+                    Full View
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Product Card 5 End-->
+            <!-- Product Card 6 Start-->
+            <div class="bg-white rounded-lg shadow-lg p-4">
+              <div class="relative h-48">
+                <!-- Set a fixed height here -->
+                <img
+                  src="https://www.dhananjaycreation.com/uploaded-files/thumb-cache/member_59/thumb---raditional-red-banarasi-saree-with-rich-pallu-and-floral-zari-patterns_9557.jpg"
+                  alt="Product Image"
+                  class="w-full h-full object-cover rounded-lg transform transition-transform duration-300 hover:scale-110"
+                />
+                <span
+                  class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs"
+                  >New Arrival</span
+                >
+                <button
+                  class="absolute top-2 right-2 text-gray-400 hover:text-red-500"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    class="w-6 h-6"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="mt-4">
+                <h3 class="text-lg font-semibold">Wedding Sarees</h3>
+                <p class="text-gray-500">TK 5910.00</p>
+                <div class="flex gap-2 mt-4">
+                  <button
+                    class="w-1/2 bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+                  >
+                    Add to Cart
+                  </button>
+                  <button
+                    class="w-1/2 bg-gray-500 text-white py-2 rounded hover:bg-gray-600"
+                  >
+                    Full View
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Product Card 6 End-->
+            <!-- Product Card 7 Start-->
+            <div class="bg-white rounded-lg shadow-lg p-4">
+              <div class="relative h-48">
+                <!-- Set a fixed height here -->
+                <img
+                  src="https://assets0.mirraw.com/images/7270261/86A_Jacquard_Nehru_1_long_webp.webp?1706788502"
+                  alt="Product Image"
+                  class="w-full h-full object-cover rounded-lg transform transition-transform duration-300 hover:scale-110"
+                />
+                <span
+                  class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs"
+                  >New Arrival</span
+                >
+                <button
+                  class="absolute top-2 right-2 text-gray-400 hover:text-red-500"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    class="w-6 h-6"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="mt-4">
+                <h3 class="text-lg font-semibold">Wedding Dress</h3>
+                <p class="text-gray-500">TK 7990.00</p>
+                <div class="flex gap-2 mt-4">
+                  <button
+                    class="w-1/2 bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+                  >
+                    Add to Cart
+                  </button>
+                  <button
+                    class="w-1/2 bg-gray-500 text-white py-2 rounded hover:bg-gray-600"
+                  >
+                    Full View
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Product Card 7 End-->
+            <!-- Product Card 8 Start-->
+            <div class="bg-white rounded-lg shadow-lg p-4">
+              <div class="relative h-48">
+                <!-- Set a fixed height here -->
+                <img
+                  src="https://mysilklove.com/cdn/shop/products/Mslf1_07167103-477d-47cf-8ec6-efdf015e77c6.jpg?v=1669012032&width=2048"
+                  alt="Product Image"
+                  class="w-full h-full object-cover rounded-lg transform transition-transform duration-300 hover:scale-110"
+                />
+                <span
+                  class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs"
+                  >New Arrival</span
+                >
+                <button
+                  class="absolute top-2 right-2 text-gray-400 hover:text-red-500"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    class="w-6 h-6"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="mt-4">
+                <h3 class="text-lg font-semibold">Kalamkari Saree</h3>
+                <p class="text-gray-500">TK 8910.00</p>
+                <div class="flex gap-2 mt-4">
+                  <button
+                    class="w-1/2 bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+                  >
+                    Add to Cart
+                  </button>
+                  <button
+                    class="w-1/2 bg-gray-500 text-white py-2 rounded hover:bg-gray-600"
+                  >
+                    Full View
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Product Card 8 End-->
+            <!-- Product Card 9 Start-->
+            <div class="bg-white rounded-lg shadow-lg p-4">
+              <div class="relative h-48">
+                <!-- Set a fixed height here -->
+                <img
+                  src="https://twelvebd.com/cdn/shop/files/AJ-TSHP-TM24-07S-0282_6_600x600.jpg?v=1724219415"
+                  alt="Product Image"
+                  class="w-full h-full object-cover rounded-lg transform transition-transform duration-300 hover:scale-110"
+                />
+                <span
+                  class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs"
+                  >New Arrival</span
+                >
+                <button
+                  class="absolute top-2 right-2 text-gray-400 hover:text-red-500"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    class="w-6 h-6"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="mt-4">
+                <h3 class="text-lg font-semibold">Mens T-Shirt</h3>
+                <p class="text-gray-500">TK 910.00</p>
+                <div class="flex gap-2 mt-4">
+                  <button
+                    class="w-1/2 bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+                  >
+                    Add to Cart
+                  </button>
+                  <button
+                    class="w-1/2 bg-gray-500 text-white py-2 rounded hover:bg-gray-600"
+                  >
+                    Full View
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Product Card 9 End-->
+            <!-- Product Card 10 Start-->
+            <div class="bg-white rounded-lg shadow-lg p-4">
+              <div class="relative h-48">
+                <!-- Set a fixed height here -->
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOUgMcCfK1m5FE09Dt2V_O74o3lki3sc3BkIeZME4mHG2jwaILlBsH5JSwq0mENAH5ktY&usqp=CAU"
+                  alt="Product Image"
+                  class="w-full h-full object-cover rounded-lg transform transition-transform duration-300 hover:scale-110"
+                />
+                <span
+                  class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs"
+                  >New Arrival</span
+                >
+                <button
+                  class="absolute top-2 right-2 text-gray-400 hover:text-red-500"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    class="w-6 h-6"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="mt-4">
+                <h3 class="text-lg font-semibold">OEM T SHIRT</h3>
+                <p class="text-gray-500">TK 1910.00</p>
+                <div class="flex gap-2 mt-4">
+                  <button
+                    class="w-1/2 bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+                  >
+                    Add to Cart
+                  </button>
+                  <button
+                    class="w-1/2 bg-gray-500 text-white py-2 rounded hover:bg-gray-600"
+                  >
+                    Full View
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Product Card 10 End-->
+            <!-- Product Card 11 Start-->
+            <div class="bg-white rounded-lg shadow-lg p-4">
+              <div class="relative h-48">
+                <!-- Set a fixed height here -->
+                <img
+                  src="https://i.pinimg.com/736x/bb/6a/f3/bb6af3cf8d45e43368d86fb5ec3bb3ac.jpg"
+                  alt="Product Image"
+                  class="w-full h-full object-cover rounded-lg transform transition-transform duration-300 hover:scale-110"
+                />
+                <span
+                  class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs"
+                  >New Arrival</span
+                >
+                <button
+                  class="absolute top-2 right-2 text-gray-400 hover:text-red-500"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    class="w-6 h-6"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="mt-4">
+                <h3 class="text-lg font-semibold">Indian Wedding</h3>
+                <p class="text-gray-500">TK 6910.00</p>
+                <div class="flex gap-2 mt-4">
+                  <button
+                    class="w-1/2 bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+                  >
+                    Add to Cart
+                  </button>
+                  <button
+                    class="w-1/2 bg-gray-500 text-white py-2 rounded hover:bg-gray-600"
+                  >
+                    Full View
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Product Card 11 End-->
+            <!-- Product Card 12 Start-->
+            <div class="bg-white rounded-lg shadow-lg p-4">
+              <div class="relative h-48">
+                <!-- Set a fixed height here -->
+                <img
+                  src="https://m.media-amazon.com/images/I/81wy4PsxSCL._AC_UY1100_.jpg"
+                  alt="Product Image"
+                  class="w-full h-full object-cover rounded-lg transform transition-transform duration-300 hover:scale-110"
+                />
+                <span
+                  class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs"
+                  >New Arrival</span
+                >
+                <button
+                  class="absolute top-2 right-2 text-gray-400 hover:text-red-500"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    class="w-6 h-6"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="mt-4">
+                <h3 class="text-lg font-semibold">TOPLOT T-Shirt</h3>
+                <p class="text-gray-500">TK 1310.00</p>
+                <div class="flex gap-2 mt-4">
+                  <button
+                    class="w-1/2 bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+                  >
+                    Add to Cart
+                  </button>
+                  <button
+                    class="w-1/2 bg-gray-500 text-white py-2 rounded hover:bg-gray-600"
+                  >
+                    Full View
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Product Card 12 End-->
+          </section>
+        </div>
       </div>
     </main>
 
@@ -185,9 +866,9 @@
         <div class="mt-8 flex justify-center space-x-4">
           <!-- Example payment icons (use relevant payment icons if available) -->
           <!-- <img src="./images/visa.png" alt="Visa" class="h-10 w-10" />
-            <img src="./images/master.png" alt="MasterCard" class="h-10 w-10" />
-            <img src="./images/bkash.webp" alt="bKash" class="h-10 w-10" />
-            <img src="/images/nagad.png" alt="Nagad" class="h-10 w-10" /> -->
+          <img src="./images/master.png" alt="MasterCard" class="h-10 w-10" />
+          <img src="./images/bkash.webp" alt="bKash" class="h-10 w-10" />
+          <img src="/images/nagad.png" alt="Nagad" class="h-10 w-10" /> -->
           <img src="./images/SSLCommerz-Pay.png" alt="Visa" class="h-28" />
           <!-- Add more payment logos as necessary -->
         </div>
@@ -198,5 +879,6 @@
         </div>
       </div>
     </footer>
+    <!-- footer component end -->
   </body>
 </html>
