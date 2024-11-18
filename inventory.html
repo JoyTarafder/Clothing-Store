@@ -89,13 +89,15 @@
       </div>
 
       <!-- Main Content -->
-      <main class="lg:ml-64 flex-1 p-6">
+      <main class="flex-1 p-6">
         <h1 class="text-2xl font-semibold mb-4">Inventory</h1>
-      
+
         <!-- Inventory Cards -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
           <!-- Category Card: Men -->
-          <div class="bg-white p-4 rounded-lg shadow hover:shadow-md transition">
+          <div
+            class="bg-white p-4 rounded-lg shadow hover:shadow-md transition"
+          >
             <div class="flex justify-between items-center">
               <h2 class="font-semibold text-lg">Men</h2>
               <button class="text-red-500 hover:text-red-700">
@@ -106,9 +108,11 @@
             <p class="text-gray-600">Products: 4</p>
             <p class="text-gray-600">Variants: 6</p>
           </div>
-      
+
           <!-- Category Card: Women -->
-          <div class="bg-white p-4 rounded-lg shadow hover:shadow-md transition">
+          <div
+            class="bg-white p-4 rounded-lg shadow hover:shadow-md transition"
+          >
             <div class="flex justify-between items-center">
               <h2 class="font-semibold text-lg">Women</h2>
               <button class="text-red-500 hover:text-red-700">
@@ -119,9 +123,11 @@
             <p class="text-gray-600">Products: 2</p>
             <p class="text-gray-600">Variants: 4</p>
           </div>
-      
+
           <!-- Category Card: Kids -->
-          <div class="bg-white p-4 rounded-lg shadow hover:shadow-md transition">
+          <div
+            class="bg-white p-4 rounded-lg shadow hover:shadow-md transition"
+          >
             <div class="flex justify-between items-center">
               <h2 class="font-semibold text-lg">Kids</h2>
               <button class="text-red-500 hover:text-red-700">
@@ -133,7 +139,7 @@
             <p class="text-gray-600">Variants: 0</p>
           </div>
         </div>
-      
+
         <!-- Stock Information -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
           <!-- Out of Stock Card -->
@@ -141,14 +147,14 @@
             <h2 class="text-lg font-semibold text-gray-800">Out of Stock</h2>
             <p class="text-gray-500">No out of Stock Products Found</p>
           </div>
-      
+
           <!-- Low on Stock Card -->
           <div class="bg-white p-4 rounded-lg shadow">
             <h2 class="text-lg font-semibold text-gray-800">Low on Stock</h2>
             <p class="text-gray-500">No Low Stock Products Found</p>
           </div>
         </div>
-      
+
         <!-- Stock Table -->
         <div class="bg-white p-6 rounded-lg shadow">
           <h2 class="text-lg font-semibold mb-4">Detailed Stock Information</h2>
@@ -170,8 +176,12 @@
                   <td class="py-3 px-4">15</td>
                   <td class="py-3 px-4 text-green-600">In Stock</td>
                   <td class="py-3 px-4">
-                    <button class="text-blue-500 hover:text-blue-700">Edit</button>
-                    <button class="ml-2 text-red-500 hover:text-red-700">Delete</button>
+                    <button class="text-blue-500 hover:text-blue-700">
+                      Edit
+                    </button>
+                    <button class="ml-2 text-red-500 hover:text-red-700">
+                      Delete
+                    </button>
                   </td>
                 </tr>
                 <tr class="border-b">
@@ -180,8 +190,12 @@
                   <td class="py-3 px-4">5</td>
                   <td class="py-3 px-4 text-yellow-600">Low Stock</td>
                   <td class="py-3 px-4">
-                    <button class="text-blue-500 hover:text-blue-700">Edit</button>
-                    <button class="ml-2 text-red-500 hover:text-red-700">Delete</button>
+                    <button class="text-blue-500 hover:text-blue-700">
+                      Edit
+                    </button>
+                    <button class="ml-2 text-red-500 hover:text-red-700">
+                      Delete
+                    </button>
                   </td>
                 </tr>
                 <tr>
@@ -190,8 +204,12 @@
                   <td class="py-3 px-4">0</td>
                   <td class="py-3 px-4 text-red-600">Out of Stock</td>
                   <td class="py-3 px-4">
-                    <button class="text-blue-500 hover:text-blue-700">Edit</button>
-                    <button class="ml-2 text-red-500 hover:text-red-700">Delete</button>
+                    <button class="text-blue-500 hover:text-blue-700">
+                      Edit
+                    </button>
+                    <button class="ml-2 text-red-500 hover:text-red-700">
+                      Delete
+                    </button>
                   </td>
                 </tr>
               </tbody>
@@ -199,7 +217,6 @@
           </div>
         </div>
       </main>
-      
     </div>
 
     <script>
