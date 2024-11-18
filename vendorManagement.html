@@ -89,7 +89,70 @@
       </div>
 
       <!-- Main Content -->
-      <h1 class="text-center">Inventory</h1>
+      <div class="flex flex-col items-center p-4 lg:ml-64 w-full">
+        <!-- Header -->
+        <div class="w-full max-w-7xl mb-4">
+          <div
+            class="flex items-center justify-between p-4 bg-white shadow-md rounded-lg"
+          >
+            <h1 class="text-3xl font-semibold text-gray-800 flex items-center">
+              Vendor Management
+            </h1>
+            <button
+              class="flex items-center bg-blue-600 text-white py-2 px-4 rounded-lg shadow hover:bg-blue-700 transition duration-200"
+            >
+              Add New Vendor
+            </button>
+          </div>
+        </div>
+
+        <!-- All Vendors Section -->
+        <div class="w-full max-w-7xl bg-white shadow-md rounded-lg p-4">
+          <h2 class="text-center text-2xl font-semibold text-gray-800 mb-4">
+            All Vendors
+          </h2>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-separate border-spacing-y-2">
+              <thead>
+                <tr class="bg-gray-200">
+                  <th class="py-3 px-4 font-medium text-gray-600">Vendor ID</th>
+                  <th class="py-3 px-4 font-medium text-gray-600">
+                    Vendor Name
+                  </th>
+                  <th class="py-3 px-4 font-medium text-gray-600">Type</th>
+                  <th class="py-3 px-4 font-medium text-gray-600">Email</th>
+                  <th class="py-3 px-4 font-medium text-gray-600">
+                    Contact No
+                  </th>
+                  <th class="py-3 px-4 font-medium text-gray-600">Address</th>
+                  <th class="py-3 px-4 font-medium text-gray-600">Comment</th>
+                  <th class="py-3 px-4 font-medium text-gray-600">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Vendor Row 1 -->
+                <tr class="bg-white border-b">
+                  <td class="py-3 px-4">1</td>
+                  <td class="py-3 px-4">Test Vendor</td>
+                  <td class="py-3 px-4">Shop</td>
+                  <td class="py-3 px-4">vendor@gmail.com</td>
+                  <td class="py-3 px-4">017</td>
+                  <td class="py-3 px-4">Dhaka Basundora</td>
+                  <td class="py-3 px-4">Good</td>
+                  <td class="py-3 px-4 flex space-x-2">
+                    <button class="text-green-500 hover:text-green-700">
+                      <span class="material-icons">edit</span>
+                    </button>
+                    <button class="text-red-500 hover:text-red-700">
+                      <span class="material-icons">delete</span>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script>
