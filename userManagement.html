@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Order Management</title>
+    <title>User Management</title>
     <link rel="stylesheet" href="./output/tailwind.css" />
   </head>
   <body class="bg-gray-100 font-sans">
@@ -51,7 +51,7 @@
               <a
                 href="userManagement.html"
                 id="user-management-link"
-                class="sidebar-link block py-2.5 px-4 rounded transition duration-200"
+                class="sidebar-link block py-2.5 px-4 rounded transition duration-200 bg-blue-800"
                 >User Management</a
               >
             </li>
@@ -89,7 +89,71 @@
       </div>
 
       <!-- Main Content -->
-      <h1 class="text-center">Inventory</h1>
+      <div class="lg:ml-64 w-full p-4">
+        <!-- Header -->
+        <div class="flex items-center justify-between py-4">
+          <h1 class="text-3xl font-semibold text-gray-800">User Management</h1>
+        </div>
+
+        <!-- Table Wrapper -->
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+          <!-- Table Header -->
+          <div class="p-4 text-center">
+            <h2 class="text-xl font-semibold text-gray-800">All Users</h2>
+          </div>
+
+          <!-- User Table -->
+          <div class="overflow-x-auto">
+            <table class="w-full text-left">
+              <thead>
+                <tr class="bg-gray-200">
+                  <th class="py-3 px-4 font-medium text-gray-600">User ID</th>
+                  <th class="py-3 px-4 font-medium text-gray-600">User Name</th>
+                  <th class="py-3 px-4 font-medium text-gray-600">Email</th>
+                  <th class="py-3 px-4 font-medium text-gray-600">Contact No</th>
+                  <th class="py-3 px-4 font-medium text-gray-600">Address</th>
+                  <th class="py-3 px-4 font-medium text-gray-600">Total Order</th>
+                  <th class="py-3 px-4 font-medium text-gray-600">Comment</th>
+                  <th class="py-3 px-4 font-medium text-gray-600">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- User Row 1 -->
+                <tr class="border-b">
+                  <td class="py-3 px-4">1</td>
+                  <td class="py-3 px-4">test2</td>
+                  <td class="py-3 px-4">test2@gmail.com</td>
+                  <td class="py-3 px-4">0191234213</td>
+                  <td class="py-3 px-4">dhaka</td>
+                  <td class="py-3 px-4">0</td>
+                  <td class="py-3 px-4">-</td>
+                  <td class="py-3 px-4">
+                    <button class="text-green-500 hover:text-green-700">
+                      <span class="material-icons">comment</span>
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- User Row 2 -->
+                <tr class="border-b">
+                  <td class="py-3 px-4">2</td>
+                  <td class="py-3 px-4">test</td>
+                  <td class="py-3 px-4">test@gmail.com</td>
+                  <td class="py-3 px-4">0178150000</td>
+                  <td class="py-3 px-4">Dhaka basundora Dhaka</td>
+                  <td class="py-3 px-4">3</td>
+                  <td class="py-3 px-4">-</td>
+                  <td class="py-3 px-4">
+                    <button class="text-green-500 hover:text-green-700">
+                      <span class="material-icons">comment</span>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script>
@@ -101,20 +165,11 @@
         sidebar.classList.toggle("hidden");
       });
 
-      // JavaScript to set active state on menu click
-      function setActive(element) {
-        const sidebarLinks = document.querySelectorAll(".sidebar-link");
-        sidebarLinks.forEach((link) =>
-          link.classList.remove("bg-blue-800", "active")
-        );
-        element.classList.add("bg-blue-800", "active");
-      }
-
       // Set the active link based on the current page
       document.addEventListener("DOMContentLoaded", function () {
         const currentPage = window.location.pathname.split("/").pop();
         const linkMap = {
-          "dashboard.html": "dashboard-link",
+          "adminPanel.html": "dashboard-link",
           "orderManagement.html": "order-management-link",
           "inventory.html": "inventory-link",
           "categoryManagement.html": "category-management-link",
@@ -124,10 +179,7 @@
         };
         const activeLinkId = linkMap[currentPage];
         if (activeLinkId) {
-          const activeLink = document.getElementById(activeLinkId);
-          if (activeLink) {
-            setActive(activeLink);
-          }
+          document.getElementById(activeLinkId)?.classList.add("bg-blue-800");
         }
       });
     </script>
