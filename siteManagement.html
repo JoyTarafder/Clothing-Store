@@ -3,95 +3,150 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Order Management</title>
+    <title>Responsive Layout with Fixed Sidebar</title>
     <link rel="stylesheet" href="./output/tailwind.css" />
   </head>
   <body class="bg-gray-100 font-sans">
-    <div class="flex">
+    <div class="flex h-screen">
       <!-- Sidebar -->
       <aside
-        class="fixed top-0 left-0 w-64 bg-slate-800 text-white h-screen p-4 overflow-y-auto hidden lg:block"
+        class="w-64 bg-slate-800 text-white flex flex-col fixed inset-y-0 left-0"
       >
-        <h2 class="text-2xl font-semibold mb-6">Admin Panel</h2>
-        <nav>
-          <ul>
+        <!-- Fixed Header -->
+        <div class="p-4 bg-slate-900">
+          <h2 class="text-2xl font-semibold">Admin Panel</h2>
+        </div>
+
+        <!-- Scrollable Navigation -->
+        <nav
+          class="flex-1 overflow-y-auto mt-4"
+          style="scrollbar-width: thin; scrollbar-color: #1f2937 #2d3748"
+        >
+          <ul class="space-y-2">
             <li>
               <a
                 href="adminPanel.html"
                 id="dashboard-link"
-                class="sidebar-link block py-2.5 px-4 rounded transition duration-200"
-                >Dashboard</a
+                class="sidebar-link block py-2.5 px-4 hover:bg-slate-700 rounded transition duration-200"
               >
+                Dashboard
+              </a>
             </li>
             <li>
               <a
                 href="orderManagement.html"
                 id="order-management-link"
-                class="sidebar-link block py-2.5 px-4 rounded transition duration-200"
-                >Order Management</a
+                class="sidebar-link block py-2.5 px-4 hover:bg-slate-700 rounded transition duration-200"
               >
+                Order Management
+              </a>
             </li>
             <li>
               <a
                 href="inventory.html"
                 id="inventory-link"
-                class="sidebar-link block py-2.5 px-4 rounded transition duration-200"
-                >Inventory</a
+                class="sidebar-link block py-2.5 px-4 hover:bg-slate-700 rounded transition duration-200"
               >
+                Inventory
+              </a>
             </li>
             <li>
               <a
                 href="categoryManagement.html"
                 id="category-management-link"
-                class="sidebar-link block py-2.5 px-4 rounded transition duration-200"
-                >Category Management</a
+                class="sidebar-link block py-2.5 px-4 hover:bg-slate-700 rounded transition duration-200"
               >
+                Category Management
+              </a>
             </li>
             <li>
               <a
                 href="userManagement.html"
                 id="user-management-link"
-                class="sidebar-link block py-2.5 px-4 rounded transition duration-200"
-                >User Management</a
+                class="sidebar-link block py-2.5 px-4 hover:bg-slate-700 rounded transition duration-200"
               >
+                User Management
+              </a>
             </li>
             <li>
               <a
                 href="vendorManagement.html"
                 id="vendor-management-link"
-                class="sidebar-link block py-2.5 px-4 rounded transition duration-200"
-                >Vendor Management</a
+                class="sidebar-link block py-2.5 px-4 hover:bg-slate-700 rounded transition duration-200"
               >
+                Vendor Management
+              </a>
             </li>
             <li>
               <a
                 href="siteManagement.html"
                 id="site-management-link"
                 class="sidebar-link block py-2.5 px-4 rounded transition duration-200"
-                >Site Management</a
               >
+                Site Management
+              </a>
             </li>
           </ul>
         </nav>
-        <div class="mt-44">
-          <a href="./adminPanelLogInPage.html">
-            <button class="w-full bg-blue-700 text-white py-2 rounded-md mt-6">
-              Log Out
-            </button>
-          </a>
-          <p class="text-center mt-4 text-sm">Developed by Joy Tarafder</p>
+
+        <!-- Footer -->
+        <div class="p-4 bg-slate-900 mt-auto">
+          <button
+            class="w-full bg-blue-700 text-white py-2 rounded-md hover:bg-blue-600"
+          >
+            Log Out
+          </button>
+          <p class="text-center mt-4 text-sm">
+            Developed by <span class="font-semibold">Joy Tarafder</span>
+          </p>
         </div>
       </aside>
 
-      <!-- Mobile Sidebar Toggle -->
-      <div class="lg:hidden fixed top-4 left-4 z-50">
-        <button id="menu-toggle" class="text-white bg-blue-600 p-2 rounded-lg">
-          ☰
-        </button>
-      </div>
-
       <!-- Main Content -->
-      <h1 class="text-center">Inventory</h1>
+      <main class="ml-64 w-full flex flex-col overflow-auto">
+        <!-- Header -->
+        <header
+          class="bg-white shadow-md px-6 py-4 sticky top-0 z-10 flex justify-between items-center"
+        >
+          <h1 class="text-xl font-semibold text-gray-800">Site Management</h1>
+          <button
+            class="bg-blue-600 text-white flex items-center px-4 py-2 rounded-md hover:bg-blue-700 transition"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5 mr-2"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 4v16m8-8H4"
+              />
+            </svg>
+            Add New Banner
+          </button>
+        </header>
+
+        <!-- Main Content Area -->
+        <section class="p-6">
+          <h2 class="text-lg font-semibold text-gray-800 mb-4">All Banners</h2>
+          <div class="bg-white shadow-md rounded-lg p-6">
+            <p class="text-gray-600">
+              Scrollable content goes here. You can include tables, charts, or
+              any other content as needed.
+            </p>
+            <div class="mt-6 h-96 bg-gray-100 rounded-lg overflow-y-auto p-4">
+              <p class="text-gray-500">
+                Example scrollable section inside the content area. Add your
+                data or components here.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
 
     <script>
