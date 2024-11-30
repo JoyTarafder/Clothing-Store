@@ -120,8 +120,10 @@
               Vendor Management
             </h1>
             <button
-              class="flex items-center bg-blue-600 text-white py-2 px-4 rounded-lg shadow hover:bg-blue-700 transition duration-200"
+              id="addVendorButton"
+              class="flex items-center bg-blue-600 text-white py-3 px-4 rounded-lg shadow hover:bg-blue-700 transition duration-200 gap-3"
             >
+              <img src="../images/plus.png" class="h-6 w-6" />
               Add New Vendor
             </button>
           </div>
@@ -150,27 +152,111 @@
                   <th class="py-3 px-4 font-medium text-gray-600">Action</th>
                 </tr>
               </thead>
-              <tbody>
-                <!-- Vendor Row 1 -->
-                <tr class="bg-white border-b">
-                  <td class="py-3 px-4">1</td>
-                  <td class="py-3 px-4">Test Vendor</td>
-                  <td class="py-3 px-4">Shop</td>
-                  <td class="py-3 px-4">vendor@gmail.com</td>
-                  <td class="py-3 px-4">017</td>
-                  <td class="py-3 px-4">Dhaka Basundora</td>
-                  <td class="py-3 px-4">Good</td>
-                  <td class="py-3 px-4 flex space-x-2">
-                    <button class="text-green-500 hover:text-green-700">
-                      <span class="material-icons">edit</span>
-                    </button>
-                    <button class="text-red-500 hover:text-red-700">
-                      <span class="material-icons">delete</span>
-                    </button>
-                  </td>
-                </tr>
+              <tbody id="vendorTableBody">
+                <!-- Vendor rows will be dynamically added here -->
               </tbody>
             </table>
+          </div>
+        </div>
+
+        <!-- Vendor Modal -->
+        <div
+          id="vendorModal"
+          class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden"
+        >
+          <div class="bg-white rounded-lg shadow-lg w-full max-w-md p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">
+              Add New Vendor
+            </h3>
+            <form id="vendorForm" class="space-y-4">
+              <div>
+                <label
+                  for="vendorName"
+                  class="block text-sm font-medium text-gray-600"
+                  >Vendor Name</label
+                >
+                <input
+                  type="text"
+                  id="vendorName"
+                  class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+              <div>
+                <label
+                  for="vendorType"
+                  class="block text-sm font-medium text-gray-600"
+                  >Vendor Type</label
+                >
+                <input
+                  type="text"
+                  id="vendorType"
+                  class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+              <div>
+                <label
+                  for="email"
+                  class="block text-sm font-medium text-gray-600"
+                  >Email</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+              <div>
+                <label
+                  for="contactNo"
+                  class="block text-sm font-medium text-gray-600"
+                  >Contact Number</label
+                >
+                <input
+                  type="text"
+                  id="contactNo"
+                  class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+              <div>
+                <label
+                  for="address"
+                  class="block text-sm font-medium text-gray-600"
+                  >Address</label
+                >
+                <input
+                  type="text"
+                  id="address"
+                  class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+              <div>
+                <label
+                  for="comment"
+                  class="block text-sm font-medium text-gray-600"
+                  >Comment</label
+                >
+                <input
+                  type="text"
+                  id="comment"
+                  class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+              <div class="flex justify-end space-x-3">
+                <button
+                  type="button"
+                  id="cancelModal"
+                  class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+                >
+                  Add Vendor
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -213,6 +299,61 @@
             setActive(activeLink);
           }
         }
+      });
+
+      // Modal toggle logic
+      const addVendorButton = document.getElementById("addVendorButton");
+      const vendorModal = document.getElementById("vendorModal");
+      const cancelModal = document.getElementById("cancelModal");
+      const vendorForm = document.getElementById("vendorForm");
+      const vendorTableBody = document.getElementById("vendorTableBody");
+
+      addVendorButton.addEventListener("click", () => {
+        vendorModal.classList.remove("hidden");
+      });
+
+      cancelModal.addEventListener("click", () => {
+        vendorModal.classList.add("hidden");
+      });
+
+      // Add vendor functionality
+      let vendorId = 1;
+
+      vendorForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const vendorName = document.getElementById("vendorName").value;
+        const vendorType = document.getElementById("vendorType").value;
+        const email = document.getElementById("email").value;
+        const contactNo = document.getElementById("contactNo").value;
+        const address = document.getElementById("address").value;
+        const comment = document.getElementById("comment").value;
+
+        const newRow = document.createElement("tr");
+        newRow.className = "bg-white border-b";
+        newRow.innerHTML = `
+    <td class="py-3 px-4">${vendorId++}</td>
+    <td class="py-3 px-4">${vendorName}</td>
+    <td class="py-3 px-4">${vendorType}</td>
+    <td class="py-3 px-4">${email}</td>
+    <td class="py-3 px-4">${contactNo}</td>
+    <td class="py-3 px-4">${address}</td>
+    <td class="py-3 px-4">${comment}</td>
+    <td class="py-3 px-4 flex space-x-2">
+      <button class="text-green-500 hover:text-green-700">
+        
+          <img src="../images/edit.png" class="h-6 w-6" />
+          
+      </button>
+      <button class="text-red-500 hover:text-red-700">
+        <img src="../images/delete.png" class="h-6 w-6" />
+      </button>
+    </td>
+  `;
+
+        vendorTableBody.appendChild(newRow);
+        vendorModal.classList.add("hidden");
+        vendorForm.reset();
       });
     </script>
   </body>
