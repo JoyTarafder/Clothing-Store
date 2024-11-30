@@ -110,13 +110,15 @@
       </div>
 
       <!-- Main Content -->
-      <div class="flex flex-col items-center p-4 lg:ml-64 w-full">
+      <div
+        class="flex flex-col items-center w-full md:ml-64 p-6 overflow-auto h-screen"
+      >
         <!-- Header -->
         <div class="w-full max-w-7xl mb-4">
           <div
             class="flex items-center justify-between p-4 bg-white shadow-md rounded-lg"
           >
-            <h1 class="text-3xl font-semibold text-gray-800 flex items-center">
+            <h1 class="text-3xl font-semibold text-gray-800">
               Vendor Management
             </h1>
             <button
@@ -153,7 +155,7 @@
                 </tr>
               </thead>
               <tbody id="vendorTableBody">
-                <!-- Vendor rows will be dynamically added here -->
+                <!-- Dynamic Rows -->
               </tbody>
             </table>
           </div>
@@ -164,98 +166,148 @@
           id="vendorModal"
           class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden"
         >
-          <div class="bg-white rounded-lg shadow-lg w-full max-w-md p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-4">
+          <div class="p-8 bg-gray-100 rounded-lg shadow-lg max-w-5xl mx-auto space-y-6">
+            <h3
+              id="modalTitle"
+              class="text-xl font-semibold mb-4 text-center text-indigo-600"
+            >
               Add New Vendor
             </h3>
-            <form id="vendorForm" class="space-y-4">
-              <div>
-                <label
-                  for="vendorName"
-                  class="block text-sm font-medium text-gray-600"
-                  >Vendor Name</label
-                >
-                <input
-                  type="text"
-                  id="vendorName"
-                  class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
-                />
+            <form
+              id="vendorForm"
+              class="space-y-6 bg-gray-100 p-6 rounded-lg  max-w-2xl"
+            >
+              <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">
+                Vendor Details
+              </h2>
+
+              <!-- Hidden Input for Editing ID -->
+              <input type="hidden" id="editingId" />
+
+              <div class="flex flex-wrap gap-11">
+                <!-- Left Column -->
+                <div class="flex-1 space-y-5">
+                  <!-- Vendor Name -->
+                  <div>
+                    <label
+                      for="vendorName"
+                      class="block text-sm font-semibold text-gray-700 mb-1"
+                      >Vendor Name</label
+                    >
+                    <input
+                      type="text"
+                      id="vendorName"
+                      placeholder="Enter vendor name"
+                      required
+                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    />
+                  </div>
+          
+                  <!-- Vendor Type -->
+                  <div>
+                    <label
+                      for="vendorType"
+                      class="block text-sm font-semibold text-gray-700 mb-1"
+                      >Vendor Type</label
+                    >
+                    <input
+                      type="text"
+                      id="vendorType"
+                      placeholder="Enter vendor type"
+                      required
+                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    />
+                  </div>
+          
+                  <!-- Email -->
+                  <div>
+                    <label
+                      for="email"
+                      class="block text-sm font-semibold text-gray-700 mb-1"
+                      >Email</label
+                    >
+                    <input
+                      type="email"
+                      id="email"
+                      placeholder="Enter email address"
+                      required
+                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    />
+                  </div>
+                </div>
+          
+                <!-- Right Column -->
+                <div class="flex-1 space-y-4">
+                  <!-- Contact Number -->
+                  <div>
+                    <label
+                      for="contactNo"
+                      class="block text-sm font-semibold text-gray-700 mb-1"
+                      >Contact Number</label
+                    >
+                    <input
+                      type="text"
+                      id="contactNo"
+                      placeholder="Enter contact number"
+                      required
+                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    />
+                  </div>
+          
+                  <!-- Address -->
+                  <div>
+                    <label
+                      for="address"
+                      class="block text-sm font-semibold text-gray-700 mb-1"
+                      >Address</label
+                    >
+                    <input
+                      type="text"
+                      id="address"
+                      placeholder="Enter address"
+                      required
+                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    />
+                  </div>
+          
+                  <!-- Comment -->
+                  <div>
+                    <label
+                      for="comment"
+                      class="block text-sm font-semibold text-gray-700 mb-1"
+                      >Comment</label
+                    >
+                    <textarea
+                      id="comment"
+                      placeholder="Add a comment (optional)"
+                      rows="3"
+                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none resize-none"
+                    ></textarea>
+                  </div>
+                </div>
               </div>
-              <div>
-                <label
-                  for="vendorType"
-                  class="block text-sm font-medium text-gray-600"
-                  >Vendor Type</label
-                >
-                <input
-                  type="text"
-                  id="vendorType"
-                  class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-              <div>
-                <label
-                  for="email"
-                  class="block text-sm font-medium text-gray-600"
-                  >Email</label
-                >
-                <input
-                  type="email"
-                  id="email"
-                  class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-              <div>
-                <label
-                  for="contactNo"
-                  class="block text-sm font-medium text-gray-600"
-                  >Contact Number</label
-                >
-                <input
-                  type="text"
-                  id="contactNo"
-                  class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-              <div>
-                <label
-                  for="address"
-                  class="block text-sm font-medium text-gray-600"
-                  >Address</label
-                >
-                <input
-                  type="text"
-                  id="address"
-                  class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-              <div>
-                <label
-                  for="comment"
-                  class="block text-sm font-medium text-gray-600"
-                  >Comment</label
-                >
-                <input
-                  type="text"
-                  id="comment"
-                  class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-              <div class="flex justify-end space-x-3">
-                <button
+          
+              <!-- Buttons -->
+              <div class="flex justify-end space-x-4 ">
+                <!-- <button
                   type="button"
                   id="cancelModal"
-                  class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition"
+                  class="bg-gray-400 text-white px-4 py-2 rounded-lg hover:bg-gray-500 transition duration-150"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+                  class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-150"
                 >
-                  Add Vendor
-                </button>
+                  Save
+                </button> -->
+
+                <button class="py-2.5 px-6 rounded-lg text-sm font-medium bg-red-500 text-white" type="button" id="cancelModal">Cancel</button>
+                <button class="py-2.5 px-6 rounded-lg text-sm font-medium text-white bg-teal-600"  type="submit">Confirm</button>
+
               </div>
+              
             </form>
           </div>
         </div>
@@ -307,54 +359,115 @@
       const cancelModal = document.getElementById("cancelModal");
       const vendorForm = document.getElementById("vendorForm");
       const vendorTableBody = document.getElementById("vendorTableBody");
+      const modalTitle = document.getElementById("modalTitle");
+      const editingId = document.getElementById("editingId");
 
+      let vendorId = 1;
+
+      // Show Modal
       addVendorButton.addEventListener("click", () => {
+        modalTitle.textContent = "Add New Vendor";
         vendorModal.classList.remove("hidden");
+        editingId.value = "";
+        vendorForm.reset();
       });
 
+      // Hide Modal
       cancelModal.addEventListener("click", () => {
         vendorModal.classList.add("hidden");
       });
 
-      // Add vendor functionality
-      let vendorId = 1;
-
+      // Add/Edit Vendor
       vendorForm.addEventListener("submit", (e) => {
         e.preventDefault();
 
-        const vendorName = document.getElementById("vendorName").value;
-        const vendorType = document.getElementById("vendorType").value;
+        const name = document.getElementById("vendorName").value;
+        const type = document.getElementById("vendorType").value;
         const email = document.getElementById("email").value;
-        const contactNo = document.getElementById("contactNo").value;
+        const contact = document.getElementById("contactNo").value;
         const address = document.getElementById("address").value;
         const comment = document.getElementById("comment").value;
 
-        const newRow = document.createElement("tr");
-        newRow.className = "bg-white border-b";
-        newRow.innerHTML = `
-    <td class="py-3 px-4">${vendorId++}</td>
-    <td class="py-3 px-4">${vendorName}</td>
-    <td class="py-3 px-4">${vendorType}</td>
-    <td class="py-3 px-4">${email}</td>
-    <td class="py-3 px-4">${contactNo}</td>
-    <td class="py-3 px-4">${address}</td>
-    <td class="py-3 px-4">${comment}</td>
-    <td class="py-3 px-4 flex space-x-2">
-      <button class="text-green-500 hover:text-green-700">
-        
-          <img src="../images/edit.png" class="h-6 w-6" />
-          
-      </button>
-      <button class="text-red-500 hover:text-red-700">
-        <img src="../images/delete.png" class="h-6 w-6" />
-      </button>
-    </td>
-  `;
+        if (editingId.value) {
+          const row = document.querySelector(`#vendor-${editingId.value}`);
+          row.innerHTML = generateRowContent(
+            editingId.value,
+            name,
+            type,
+            email,
+            contact,
+            address,
+            comment
+          );
+        } else {
+          const newRow = document.createElement("tr");
+          newRow.id = `vendor-${vendorId}`;
+          newRow.className = "bg-white border-b";
+          newRow.innerHTML = generateRowContent(
+            vendorId++,
+            name,
+            type,
+            email,
+            contact,
+            address,
+            comment
+          );
+          vendorTableBody.appendChild(newRow);
+        }
 
-        vendorTableBody.appendChild(newRow);
         vendorModal.classList.add("hidden");
         vendorForm.reset();
       });
+
+      // Row Content Generator
+      const generateRowContent = (
+        id,
+        name,
+        type,
+        email,
+        contact,
+        address,
+        comment
+      ) => `
+      <td class="py-3 px-4">${id}</td>
+      <td class="py-3 px-4">${name}</td>
+      <td class="py-3 px-4">${type}</td>
+      <td class="py-3 px-4">${email}</td>
+      <td class="py-3 px-4">${contact}</td>
+      <td class="py-3 px-4">${address}</td>
+      <td class="py-3 px-4">${comment}</td>
+      <td class="py-3 px-4 flex space-x-2">
+        <button class="text-green-500 hover:text-green-700" onclick="editVendor(${id})">
+          <img src="../images/edit.png" class="h-5 w-5" />
+        </button>
+        <button class="text-red-500 hover:text-red-700" onclick="deleteVendor(${id})">
+          <img src="../images/delete.png" class="h-5 w-5" />
+        </button>
+      </td>
+    `;
+
+      // Edit Vendor
+      const editVendor = (id) => {
+        const row = document.querySelector(`#vendor-${id}`);
+        const cells = row.children;
+
+        document.getElementById("vendorName").value = cells[1].textContent;
+        document.getElementById("vendorType").value = cells[2].textContent;
+        document.getElementById("email").value = cells[3].textContent;
+        document.getElementById("contactNo").value = cells[4].textContent;
+        document.getElementById("address").value = cells[5].textContent;
+        document.getElementById("comment").value = cells[6].textContent;
+        editingId.value = id;
+
+        modalTitle.textContent = "Edit Vendor";
+        vendorModal.classList.remove("hidden");
+      };
+
+      // Delete Vendor
+      const deleteVendor = (id) => {
+        const row = document.querySelector(`#vendor-${id}`);
+        vendorTableBody.removeChild(row);
+      };
     </script>
   </body>
 </html>
