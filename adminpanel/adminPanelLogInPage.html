@@ -78,8 +78,9 @@
           </div>
 
           <!-- Sign In Button -->
-          <a href="./adminPanel.html">
+          <a>
             <button
+              id="loginButton"
               class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-200"
             >
               Sign In
@@ -96,5 +97,33 @@
         </div>
       </div>
     </div>
+
+    <script>
+      const loginButton = document.getElementById("loginButton");
+    
+      loginButton.addEventListener("click", () => {
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+    
+        fetch("loginHandler.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams({ username, password }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              window.location.href = "adminPanel.html";
+            } else {
+              alert(data.message); // Simple popup notification
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            alert("An error occurred while logging in.");
+          });
+      });
+    </script>
+    
   </body>
 </html>
