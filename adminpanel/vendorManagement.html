@@ -201,7 +201,7 @@
               </h2>
 
               <!-- Hidden Input for Editing ID -->
-              <input type="hidden" id="editingId" />
+              <input type="hidden" id="editingId" name="editingId" />
 
               <div class="flex flex-wrap gap-11">
                 <!-- Left Column -->
@@ -216,6 +216,7 @@
                     <input
                       type="text"
                       id="vendorName"
+                      name="name"
                       placeholder="Enter vendor name"
                       required
                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
@@ -232,6 +233,7 @@
                     <input
                       type="text"
                       id="vendorType"
+                      name="type"
                       placeholder="Enter vendor type"
                       required
                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
@@ -248,6 +250,7 @@
                     <input
                       type="email"
                       id="email"
+                      name="email"
                       placeholder="Enter email address"
                       required
                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
@@ -267,6 +270,7 @@
                     <input
                       type="text"
                       id="contactNo"
+                      name="contact_no"
                       placeholder="Enter contact number"
                       required
                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
@@ -283,6 +287,7 @@
                     <input
                       type="text"
                       id="address"
+                      name="address"
                       placeholder="Enter address"
                       required
                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
@@ -298,6 +303,7 @@
                     >
                     <textarea
                       id="comment"
+                      name="comment"
                       placeholder="Add a comment (optional)"
                       rows="3"
                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none resize-none"
@@ -348,7 +354,7 @@
       class="hidden fixed top-4 right-4 flex items-center p-4 mb-4 rounded-lg text-sm border border-emerald-400 bg-emerald-50 text-emerald-500 shadow-lg slide-in"
       role="alert"
     >
-    <img src="../images/success.png" class="w-5 h-5 mr-2"/>
+      <img src="../images/success.png" class="w-5 h-5 mr-2" />
       <span class="font-semibold mr-1">New Vendor has been added.</span>
     </div>
 
@@ -358,26 +364,39 @@
       class="hidden fixed top-4 right-4 flex items-center p-4 mb-4 rounded-lg text-sm border border-red-400 bg-red-50 text-red-500 shadow-lg slide-in"
       role="alert"
     >
-      <img src="../images/delete-user.png" class="w-5 h-5 mr-2"/>
+      <img src="../images/delete-user.png" class="w-5 h-5 mr-2" />
       <span class="font-semibold mr-1">Vendor has been deleted.</span>
     </div>
 
     <script>
       // JavaScript to show the alert after form submission
-      document
-        .getElementById("vendorModal")
-        .addEventListener("submit", function (event) {
-          event.preventDefault(); // Prevent actual form submission
-          const alert = document.getElementById("alert-success");
+      document.getElementById("vendorForm").addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent actual form submission
+        const formData = new FormData(this);
 
-          // Show success alert with slide-in animation
-          alert.classList.remove("hidden");
-
-          // Automatically hide after 3 seconds
-          setTimeout(() => {
-            alert.classList.add("hidden");
-          }, 3000);
-        });
+        fetch("vendorHandler.php", {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              document.getElementById("alert-success").classList.remove("hidden");
+              setTimeout(() => {
+                document.getElementById("alert-success").classList.add("hidden");
+              }, 3000);
+              loadVendors(); // Refresh the vendor list
+              document.getElementById("vendorModal").classList.add("hidden");
+              this.reset();
+            } else {
+              alert(data.message);
+              console.log("Missing fields:", data.missing_fields);
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      });
 
       // JavaScript to delete a vendor
       // Function to show the delete popup
@@ -459,43 +478,58 @@
       vendorForm.addEventListener("submit", (e) => {
         e.preventDefault();
 
-        const name = document.getElementById("vendorName").value;
-        const type = document.getElementById("vendorType").value;
-        const email = document.getElementById("email").value;
-        const contact = document.getElementById("contactNo").value;
-        const address = document.getElementById("address").value;
-        const comment = document.getElementById("comment").value;
+        const formData = new FormData(vendorForm);
 
-        if (editingId.value) {
-          const row = document.querySelector(`#vendor-${editingId.value}`);
-          row.innerHTML = generateRowContent(
-            editingId.value,
-            name,
-            type,
-            email,
-            contact,
-            address,
-            comment
-          );
-        } else {
-          const newRow = document.createElement("tr");
-          newRow.id = `vendor-${vendorId}`;
-          newRow.className = "bg-white border-b";
-          newRow.innerHTML = generateRowContent(
-            vendorId++,
-            name,
-            type,
-            email,
-            contact,
-            address,
-            comment
-          );
-          vendorTableBody.appendChild(newRow);
-        }
-
-        vendorModal.classList.add("hidden");
-        vendorForm.reset();
+        fetch("vendorHandler.php", {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              loadVendors(); // Refresh the vendor list
+              vendorModal.classList.add("hidden");
+              vendorForm.reset();
+            } else {
+              alert(data.message);
+              console.log("Missing fields:", data.missing_fields);
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
       });
+
+      // Load Vendors
+      function loadVendors() {
+        fetch("vendorHandler.php")
+          .then((response) => response.json())
+          .then((vendors) => {
+            const vendorTableBody = document.getElementById("vendorTableBody");
+            vendorTableBody.innerHTML = "";
+            vendors.forEach((vendor) => {
+              const newRow = document.createElement("tr");
+              newRow.id = `vendor-${vendor.id}`;
+              newRow.className = "bg-white border-b";
+              newRow.innerHTML = generateRowContent(
+                vendor.id,
+                vendor.name,
+                vendor.type,
+                vendor.email,
+                vendor.contact_no,
+                vendor.address,
+                vendor.comment
+              );
+              vendorTableBody.appendChild(newRow);
+            });
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      }
+
+      // Call loadVendors on page load
+      document.addEventListener("DOMContentLoaded", loadVendors);
 
       // Row Content Generator
       const generateRowContent = (
@@ -507,22 +541,22 @@
         address,
         comment
       ) => `
-      <td class="py-3 px-4">${id}</td>
-      <td class="py-3 px-4">${name}</td>
-      <td class="py-3 px-4">${type}</td>
-      <td class="py-3 px-4">${email}</td>
-      <td class="py-3 px-4">${contact}</td>
-      <td class="py-3 px-4">${address}</td>
-      <td class="py-3 px-4">${comment}</td>
-      <td class="py-3 px-4 flex space-x-2">
-        <button class="text-green-500 hover:text-green-700" onclick="editVendor(${id})">
-          <img src="../images/edit.png" class="h-5 w-5" />
-        </button>
-        <button id="delete" class="text-red-500 hover:text-red-700" onclick="showDeleteNotification(deleteVendor(${id}))">
-          <img src="../images/delete.png" class="h-5 w-5" />
-        </button>
-      </td>
-    `;
+            <td class="py-3 px-4">${id}</td>
+            <td class="py-3 px-4">${name}</td>
+            <td class="py-3 px-4">${type}</td>
+            <td class="py-3 px-4">${email}</td>
+            <td class="py-3 px-4">${contact}</td>
+            <td class="py-3 px-4">${address}</td>
+            <td class="py-3 px-4">${comment}</td>
+            <td class="py-3 px-4 flex space-x-2">
+              <button class="text-green-500 hover:text-green-700" onclick="editVendor(${id})">
+                <img src="../images/edit.png" class="h-5 w-5" />
+              </button>
+              <button id="delete" class="text-red-500 hover:text-red-700" onclick="showDeleteNotification(deleteVendor(${id}))">
+                <img src="../images/delete.png" class="h-5 w-5" />
+              </button>
+            </td>
+          `;
 
       // Edit Vendor
       const editVendor = (id) => {
@@ -535,16 +569,29 @@
         document.getElementById("contactNo").value = cells[4].textContent;
         document.getElementById("address").value = cells[5].textContent;
         document.getElementById("comment").value = cells[6].textContent;
-        editingId.value = id;
+        document.getElementById("editingId").value = id;
 
-        modalTitle.textContent = "Edit Vendor";
-        vendorModal.classList.remove("hidden");
+        document.getElementById("modalTitle").textContent = "Edit Vendor";
+        document.getElementById("vendorModal").classList.remove("hidden");
       };
 
       // Delete Vendor
       const deleteVendor = (id) => {
-        const row = document.querySelector(`#vendor-${id}`);
-        vendorTableBody.removeChild(row);
+        fetch(`vendorHandler.php?id=${id}`, {
+          method: "DELETE",
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              document.querySelector(`#vendor-${id}`).remove();
+              showDeleteNotification();
+            } else {
+              alert(data.message);
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
       };
     </script>
   </body>
