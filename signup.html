@@ -31,7 +31,7 @@
       >
         <h2 class="text-3xl font-bold text-gray-800 mb-8">Registration</h2>
         <form
-          action="#"
+          action="signuphandler.php"
           method="POST"
           class="w-full lg:w-3/4"
           id="registered-form"
@@ -107,14 +107,14 @@
           </div>
           <div class="mb-4 relative">
             <label
-              for="re-password"
+              for="repassword"
               class="block text-sm font-medium text-gray-800"
-              >Re-Password</label
+              >Re-password</label
             >
             <input
               type="password"
-              id="re-password"
-              name="re-password"
+              id="repassword"
+              name="repassword"
               placeholder="Re-enter your password"
               required
               class="mt-1 block w-full px-4 py-2 border border-gray-400 bg-gray-50 rounded-md focus:ring-blue-500 focus:border-blue-500 text-gray-800 pr-10"
@@ -122,7 +122,7 @@
             <!-- Show/Hide Password Icon -->
             <button
               type="button"
-              onclick="togglePassword('re-password')"
+              onclick="togglePassword('repassword')"
               class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-600 hover:text-blue-600 transition-colors duration-200 pt-5"
             >
               <i id="showIconPassword" class="fas fa-eye h-5 w-5">
@@ -146,6 +146,17 @@
           >
             Sign Up
           </button>
+          <!-- Sign Up Option -->
+          <div class="text-center mt-2">
+            <p class="text-sm text-gray-600">
+              Are you already registered?
+              <a
+                href="./login.html"
+                class="text-blue-600 hover:text-blue-500 font-medium"
+                >Login</a
+              >
+            </p>
+          </div>
         </form>
         <!-- Popup Notification -->
         <div
@@ -167,9 +178,29 @@
               stroke-linejoin="round"
             ></path>
           </svg>
-          <span class="font-semibold mr-1"
-            >Your account have been registered !!</span
+          <span class="font-semibold mr-1">Registration successful!</span>
+        </div>
+        <!-- Error notifications -->
+        <div
+          id="error-notification"
+          class="hidden fixed top-4 right-4 flex items-center p-4 mb-4 rounded-lg text-sm border bg-red-50 text-red-500 shadow-lg slide-in"
+          role="alert"
+        >
+          <svg
+            class="w-5 h-5 mr-2"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
           >
+            <path
+              d="M10.0043 13.3333V9.16663M9.99984 6.66663H10.0073M9.99984 18.3333C5.39746 18.3333 1.6665 14.6023 1.6665 9.99996C1.6665 5.39759 5.39746 1.66663 9.99984 1.66663C14.6022 1.66663 18.3332 5.39759 18.3332 9.99996C18.3332 14.6023 14.6022 18.3333 9.99984 18.3333Z"
+              stroke="#EF4444"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></path>
+          </svg>
+          <span id="error-message" class="font-semibold mr-1"></span>
         </div>
         <!-- Social Media Icons -->
         <div class="flex space-x-4 mt-4">
@@ -272,6 +303,29 @@
       </div>
     </div>
 
+    <!-- Password mismatch notification -->
+    <div
+      id="password-mismatch"
+      class="hidden fixed top-4 right-4 flex items-center p-4 mb-4 rounded-lg text-sm border border-red-400 bg-red-50 text-red-500 shadow-lg slide-in"
+      role="alert"
+    >
+      <svg
+        class="w-5 h-5 mr-2"
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M10.0043 13.3333V9.16663M9.99984 6.66663H10.0073M9.99984 18.3333C5.39746 18.3333 1.6665 14.6023 1.6665 9.99996C1.6665 5.39759 5.39746 1.66663 9.99984 1.66663C14.6022 1.66663 18.3332 5.39759 18.3332 9.99996C18.3332 14.6023 14.6022 18.3333 9.99984 18.3333Z"
+          stroke="#EF4444"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+      </svg>
+      <span class="font-semibold mr-1">Passwords do not match. Please try again.</span>
+    </div>
+
     <script>
       function togglePassword(inputId) {
         const passwordInput = document.getElementById(inputId);
@@ -295,13 +349,13 @@
       }
 
       // JavaScript to show the alert after form submission
-      document
-        .getElementById("registered-form")
-        .addEventListener("submit", function (event) {
-          event.preventDefault(); // Prevent actual form submission
-          const alert = document.getElementById("alert-success");
+      document.getElementById("registered-form").addEventListener("submit", function (event) {
+        const password = document.getElementById("password").value;
+        const rePassword = document.getElementById("repassword").value;
 
-          // Show success alert with slide-in animation
+        if (password !== rePassword) {
+          event.preventDefault();
+          const alert = document.getElementById("password-mismatch");
           alert.classList.remove("hidden");
 
           // Automatically hide after 3 seconds
@@ -309,9 +363,52 @@
             alert.classList.add("hidden");
           }, 3000);
 
-          // Reset the form
-          event.target.reset();
-        });
+          return;
+        }
+
+        // Allow form submission
+        this.submit();
+      });
+
+      // Show error notifications based on URL parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const error = urlParams.get('error');
+      const status = urlParams.get('status');
+      if (error && !sessionStorage.getItem('errorShown')) {
+        const errorNotification = document.getElementById('error-notification');
+        const errorMessage = document.getElementById('error-message');
+        if (error === 'password_mismatch') {
+          errorMessage.textContent = 'Passwords do not match. Please try again.';
+        } else if (error === 'username_exists') {
+          errorMessage.textContent = 'Username already exists. Please choose a different username.';
+        } else if (error === 'email_exists') {
+          errorMessage.textContent = 'Email already exists. Please use a different email.';
+        }
+        errorNotification.classList.remove('hidden');
+
+        // Automatically hide after 3 seconds
+        setTimeout(() => {
+          errorNotification.classList.add('hidden');
+        }, 3000);
+
+        // Set session storage to prevent showing the error again on reload
+        sessionStorage.setItem('errorShown', 'true');
+      } else if (status === 'success' && !sessionStorage.getItem('successShown')) {
+        const successNotification = document.getElementById('alert-success');
+        successNotification.classList.remove('hidden');
+
+        // Automatically hide after 3 seconds
+        setTimeout(() => {
+          successNotification.classList.add('hidden');
+        }, 3000);
+
+        // Set session storage to prevent showing the success message again on reload
+        sessionStorage.setItem('successShown', 'true');
+      } else {
+        // Clear session storage if no error or success in URL
+        sessionStorage.removeItem('errorShown');
+        sessionStorage.removeItem('successShown');
+      }
     </script>
   </body>
 </html>

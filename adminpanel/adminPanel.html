@@ -184,6 +184,231 @@
       if (!sessionStorage.getItem('loggedIn')) {
         window.location.href = './adminPanelLogInPage.html';
       }
+
+      // JavaScript to show the alert after form submission
+      document.getElementById("vendorForm").addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent actual form submission
+        const formData = new FormData(this);
+
+        fetch("vendorHandler.php", {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              document.getElementById("alert-success").classList.remove("hidden");
+              setTimeout(() => {
+                document.getElementById("alert-success").classList.add("hidden");
+              }, 3000);
+              loadVendors(); // Refresh the vendor list
+              document.getElementById("vendorModal").classList.add("hidden");
+              this.reset();
+            } else {
+              alert(data.message);
+              console.log("Missing fields:", data.missing_fields);
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      });
+
+      // JavaScript to delete a vendor
+      // Function to show the delete popup
+      function showDeleteNotification() {
+        const deleteAlert = document.getElementById("alert-delete");
+
+        // Make the notification visible
+        deleteAlert.classList.remove("hidden");
+
+        // Auto-hide the notification after 3 seconds
+        setTimeout(() => {
+          deleteAlert.classList.add("hidden");
+        }, 3000);
+      }
+
+      // JavaScript for mobile sidebar toggle
+      const menuToggle = document.getElementById("menu-toggle");
+      const sidebar = document.querySelector("aside");
+
+      menuToggle.addEventListener("click", () => {
+        sidebar.classList.toggle("hidden");
+      });
+
+      // JavaScript to set active state on menu click
+      function setActive(element) {
+        const sidebarLinks = document.querySelectorAll(".sidebar-link");
+        sidebarLinks.forEach((link) =>
+          link.classList.remove("bg-blue-800", "active")
+        );
+        element.classList.add("bg-blue-800", "active");
+      }
+
+      // Set the active link based on the current page
+      document.addEventListener("DOMContentLoaded", function () {
+        const currentPage = window.location.pathname.split("/").pop();
+        const linkMap = {
+          "dashboard.html": "dashboard-link",
+          "orderManagement.html": "order-management-link",
+          "inventory.html": "inventory-link",
+          "categoryManagement.html": "category-management-link",
+          "userManagement.html": "user-management-link",
+          "vendorManagement.html": "vendor-management-link",
+          "siteManagement.html": "site-management-link",
+        };
+        const activeLinkId = linkMap[currentPage];
+        if (activeLinkId) {
+          const activeLink = document.getElementById(activeLinkId);
+          if (activeLink) {
+            setActive(activeLink);
+          }
+        }
+      });
+
+      // Modal toggle logic
+      const addVendorButton = document.getElementById("addVendorButton");
+      const vendorModal = document.getElementById("vendorModal");
+      const cancelModal = document.getElementById("cancelModal");
+      const vendorForm = document.getElementById("vendorForm");
+      const vendorTableBody = document.getElementById("vendorTableBody");
+      const modalTitle = document.getElementById("modalTitle");
+      const editingId = document.getElementById("editingId");
+
+      let vendorId = 1;
+
+      // Show Modal
+      addVendorButton.addEventListener("click", () => {
+        modalTitle.textContent = "Add New Vendor";
+        vendorModal.classList.remove("hidden");
+        editingId.value = "";
+        vendorForm.reset();
+      });
+
+      // Hide Modal
+      cancelModal.addEventListener("click", () => {
+        vendorModal.classList.add("hidden");
+      });
+
+      // Add/Edit Vendor
+      vendorForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(vendorForm);
+
+        fetch("vendorHandler.php", {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              loadVendors(); // Refresh the vendor list
+              vendorModal.classList.add("hidden");
+              vendorForm.reset();
+            } else {
+              alert(data.message);
+              console.log("Missing fields:", data.missing_fields);
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      });
+
+      // Load Vendors
+      function loadVendors() {
+        fetch("vendorHandler.php")
+          .then((response) => response.json())
+          .then((vendors) => {
+            const vendorTableBody = document.getElementById("vendorTableBody");
+            vendorTableBody.innerHTML = "";
+            vendors.forEach((vendor) => {
+              const newRow = document.createElement("tr");
+              newRow.id = `vendor-${vendor.id}`;
+              newRow.className = "bg-white border-b";
+              newRow.innerHTML = generateRowContent(
+                vendor.id,
+                vendor.name,
+                vendor.type,
+                vendor.email,
+                vendor.contact_no,
+                vendor.address,
+                vendor.comment
+              );
+              vendorTableBody.appendChild(newRow);
+            });
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      }
+
+      // Call loadVendors on page load
+      document.addEventListener("DOMContentLoaded", loadVendors);
+
+      // Row Content Generator
+      const generateRowContent = (
+        id,
+        name,
+        type,
+        email,
+        contact,
+        address,
+        comment
+      ) => `
+            <td class="py-3 px-4">${id}</td>
+            <td class="py-3 px-4">${name}</td>
+            <td class="py-3 px-4">${type}</td>
+            <td class="py-3 px-4">${email}</td>
+            <td class="py-3 px-4">${contact}</td>
+            <td class="py-3 px-4">${address}</td>
+            <td class="py-3 px-4">${comment}</td>
+            <td class="py-3 px-4 flex space-x-2">
+              <button class="text-green-500 hover:text-green-700" onclick="editVendor(${id})">
+                <img src="../images/edit.png" class="h-5 w-5" />
+              </button>
+              <button class="text-red-500 hover:text-red-700" onclick="deleteVendor(${id})">
+                <img src="../images/delete.png" class="h-5 w-5" />
+              </button>
+            </td>
+          `;
+
+      // Edit Vendor
+      const editVendor = (id) => {
+        const row = document.querySelector(`#vendor-${id}`);
+        const cells = row.children;
+
+        document.getElementById("vendorName").value = cells[1].textContent;
+        document.getElementById("vendorType").value = cells[2].textContent;
+        document.getElementById("email").value = cells[3].textContent;
+        document.getElementById("contactNo").value = cells[4].textContent;
+        document.getElementById("address").value = cells[5].textContent;
+        document.getElementById("comment").value = cells[6].textContent;
+        document.getElementById("editingId").value = id;
+
+        document.getElementById("modalTitle").textContent = "Edit Vendor";
+        document.getElementById("vendorModal").classList.remove("hidden");
+      };
+
+      // Delete Vendor
+      const deleteVendor = (id) => {
+        fetch(`vendorHandler.php?id=${id}`, {
+          method: "DELETE",
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              document.querySelector(`#vendor-${id}`).remove();
+              showDeleteNotification();
+            } else {
+              alert(data.message);
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      };
     </script>
   </body>
 </html>

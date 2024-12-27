@@ -368,6 +368,16 @@
       <span class="font-semibold mr-1">Vendor has been deleted.</span>
     </div>
 
+    <!-- Warning Popup Notification -->
+    <div
+      id="alert-warning"
+      class="hidden fixed top-4 right-4 flex items-center p-4 mb-4 rounded-lg text-sm border border-yellow-400 bg-yellow-50 text-yellow-500 shadow-lg slide-in"
+      role="alert"
+    >
+      <img src="../images/warning.png" class="w-5 h-5 mr-2" />
+      <span class="font-semibold mr-1">Duplicate vendor detected. Vendor not added.</span>
+    </div>
+
     <script>
       // JavaScript to show the alert after form submission
       document.getElementById("vendorForm").addEventListener("submit", function (event) {
@@ -389,8 +399,15 @@
               document.getElementById("vendorModal").classList.add("hidden");
               this.reset();
             } else {
-              alert(data.message);
-              console.log("Missing fields:", data.missing_fields);
+              if (data.message.includes("already exists")) {
+                document.getElementById("alert-warning").classList.remove("hidden");
+                setTimeout(() => {
+                  document.getElementById("alert-warning").classList.add("hidden");
+                }, 3000);
+              } else {
+                alert(data.message);
+                console.log("Missing fields:", data.missing_fields);
+              }
             }
           })
           .catch((error) => {
@@ -487,12 +504,23 @@
           .then((response) => response.json())
           .then((data) => {
             if (data.success) {
+              document.getElementById("alert-success").classList.remove("hidden");
+              setTimeout(() => {
+                document.getElementById("alert-success").classList.add("hidden");
+              }, 3000);
               loadVendors(); // Refresh the vendor list
               vendorModal.classList.add("hidden");
               vendorForm.reset();
             } else {
-              alert(data.message);
-              console.log("Missing fields:", data.missing_fields);
+              if (data.message.includes("already exists")) {
+                document.getElementById("alert-warning").classList.remove("hidden");
+                setTimeout(() => {
+                  document.getElementById("alert-warning").classList.add("hidden");
+                }, 3000);
+              } else {
+                alert(data.message);
+                console.log("Missing fields:", data.missing_fields);
+              }
             }
           })
           .catch((error) => {
@@ -506,7 +534,7 @@
           .then((response) => response.json())
           .then((vendors) => {
             const vendorTableBody = document.getElementById("vendorTableBody");
-            vendorTableBody.innerHTML = "";
+            vendorTableBody.innerHTML = ""; // Clear existing rows
             vendors.forEach((vendor) => {
               const newRow = document.createElement("tr");
               newRow.id = `vendor-${vendor.id}`;
@@ -552,7 +580,7 @@
               <button class="text-green-500 hover:text-green-700" onclick="editVendor(${id})">
                 <img src="../images/edit.png" class="h-5 w-5" />
               </button>
-              <button id="delete" class="text-red-500 hover:text-red-700" onclick="showDeleteNotification(deleteVendor(${id}))">
+              <button class="text-red-500 hover:text-red-700" onclick="deleteVendor(${id})">
                 <img src="../images/delete.png" class="h-5 w-5" />
               </button>
             </td>
@@ -577,8 +605,12 @@
 
       // Delete Vendor
       const deleteVendor = (id) => {
-        fetch(`vendorHandler.php?id=${id}`, {
-          method: "DELETE",
+        fetch(`vendorHandler.php`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ id: id, action: "delete" }),
         })
           .then((response) => response.json())
           .then((data) => {

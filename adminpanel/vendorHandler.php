@@ -14,6 +14,20 @@ if ($conn->connect_error) {
 
 // Handle Add Vendor Request
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $input = json_decode(file_get_contents('php://input'), true);
+    if (isset($input['action']) && $input['action'] === 'delete') {
+        $id = $input['id'];
+        $stmt = $conn->prepare("DELETE FROM vendors WHERE id = ?");
+        $stmt->bind_param("i", $id);
+        if ($stmt->execute()) {
+            echo json_encode(["success" => true, "message" => "Vendor deleted successfully"]);
+        } else {
+            echo json_encode(["success" => false, "message" => "Failed to delete vendor: " . $stmt->error]);
+        }
+        $stmt->close();
+        exit;
+    }
+
     $name = $_POST['name'] ?? '';
     $type = $_POST['type'] ?? '';
     $email = $_POST['email'] ?? '';
@@ -35,6 +49,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         ]);
         exit;
     }
+
+    // Check for duplicate email, name, phone number, or address
+    $stmt = $conn->prepare("SELECT id FROM vendors WHERE email = ? OR name = ? OR contact_no = ? OR address = ?");
+    $stmt->bind_param("ssss", $email, $name, $contact_no, $address);
+    $stmt->execute();
+    $stmt->store_result();
+    if ($stmt->num_rows > 0) {
+        echo json_encode(["success" => false, "message" => "Vendor with this email, name, phone number, or address already exists"]);
+        $stmt->close();
+        exit;
+    }
+    $stmt->close();
 
     $stmt = $conn->prepare("INSERT INTO vendors (name, type, email, contact_no, address, comment) VALUES (?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("ssssss", $name, $type, $email, $contact_no, $address, $comment);
