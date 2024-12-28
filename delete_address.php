@@ -16,19 +16,15 @@ if ($conn->connect_error) {
 }
 
 $current_username = $_SESSION['username'];
-$card_type = $_POST['card_type'];
-$card_number = $_POST['card_number'];
-$expiry_date = $_POST['expiry_date'];
-$cvv = $_POST['cvv'];
-$cardholder_name = $_POST['cardholder_name'];
+$address_id = $_POST['address_id'];
 
-$sql = "INSERT INTO payment_cards (username, card_type, card_number, expiry_date, cvv, cardholder_name) VALUES (?, ?, ?, ?, ?, ?)";
+$sql = "DELETE FROM addresses WHERE id = ? AND username = ?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("ssssss", $current_username, $card_type, $card_number, $expiry_date, $cvv, $cardholder_name);
+$stmt->bind_param("is", $address_id, $current_username);
 $stmt->execute();
 $stmt->close();
 $conn->close();
 
-header("Location: my_payments.php?added=true");
+header("Location: address_book.php?deleted=true");
 exit();
 ?>

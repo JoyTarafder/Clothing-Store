@@ -33,6 +33,40 @@ $result = $count_stmt->get_result();
 $order_count = $result->fetch_assoc()['count'];
 $count_stmt->close();
 
+// Update profile information
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $new_name = $_POST['name'];
+    $new_username = $_POST['username'];
+    $new_email = $_POST['email'];
+    $new_password = $_POST['password'];
+
+    // Update customers table
+    $update_sql = "UPDATE customers SET name = ?, username = ?, email = ? WHERE username = ?";
+    $update_stmt = $conn->prepare($update_sql);
+    $update_stmt->bind_param("ssss", $new_name, $new_username, $new_email, $current_username);
+    $update_stmt->execute();
+    $update_stmt->close();
+
+    // Update payment_cards table if username is changed
+    if ($new_username !== $current_username) {
+        $update_cards_sql = "UPDATE payment_cards SET username = ? WHERE username = ?";
+        $update_cards_stmt = $conn->prepare($update_cards_sql);
+        $update_cards_stmt->bind_param("ss", $new_username, $current_username);
+        $update_cards_stmt->execute();
+        $update_cards_stmt->close();
+    }
+
+    // Update session username
+    $_SESSION['username'] = $new_username;
+
+    // Update session storage in the browser
+    echo "<script>
+        sessionStorage.setItem('username', '$new_username');
+        window.location.href = 'profile.php?updated=true';
+    </script>";
+    exit();
+}
+
 $conn->close();
 ?>
 <!DOCTYPE html>
@@ -131,7 +165,7 @@ $conn->close();
                         </svg>
                         My Profile
                     </a>
-                    <a href="#" class="nav-link flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-lg">
+                    <a href="address_book.php" class="nav-link flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-lg">
                         <svg class="mr-3 h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
                         </svg>
@@ -147,9 +181,7 @@ $conn->close();
                         </span>
                     </a>
                     <a href="my_payments.php" class="nav-link flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-lg">
-                        <svg class="mr-3 h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 6h18M3 14h18M3 18h18"/>
-                        </svg>
+                        <img src="./images/credit-card.png" class="w-5 h-5 mr-3" alt="Credit Card" />
                         My Payments
                     </a>
                 </nav>
@@ -163,7 +195,7 @@ $conn->close();
                         <p class="mt-1 text-sm text-gray-500">Update your account's profile information and email address.</p>
                     </div>
                     
-                    <form action="updateprofile.php" method="POST" class="px-8 py-6 space-y-6">
+                    <form action="profile.php" method="POST" class="px-8 py-6 space-y-6">
                         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
                             <div>
                                 <label class="block text-sm font-medium text-gray-700">First Name</label>
@@ -182,7 +214,7 @@ $conn->close();
 
                             <div class="sm:col-span-2">
                                 <label class="block text-sm font-medium text-gray-700">New Password</label>
-                                <input type="password" name="password" placeholder="Leave blank to keep current password" class="form-input mt-1 block w-full rounded-lg border-gray-300 shadow-sm text-sm">
+                                <input type="password" name="password" placeholder="Change Your Password" class="form-input mt-1 block w-full rounded-lg border-gray-300 shadow-sm text-sm">
                             </div>
                         </div>
 
