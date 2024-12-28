@@ -12,9 +12,9 @@ $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Log in';
   </head>
   <body class="bg-white text-gray-900">
     <!-- Navbar on top of hero image -->
-    <header class="absolute top-0 w-full z-20">
+    <header class="absolute top-0 w-full z-20 bg-indigo-900 bg-opacity-90">
       <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center mt-7"
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center"
       >
         <!-- Logo -->
         <a href="#">
@@ -23,25 +23,25 @@ $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Log in';
 
         <!-- Menu -->
         <nav class="space-x-6 hidden md:flex">
-          <a href="./men.html" class="text-white hover:text-indigo-200 text-xl"
+          <a href="./men.html" class="text-white hover:text-indigo-300 text-xl transition duration-300"
             >Men</a
           >
           <a
             href="./women.html"
-            class="text-white hover:text-indigo-200 text-xl"
+            class="text-white hover:text-indigo-300 text-xl transition duration-300"
             >Women</a
           >
-          <a href="./kids.html" class="text-white hover:text-indigo-200 text-xl"
+          <a href="./kids.html" class="text-white hover:text-indigo-300 text-xl transition duration-300"
             >Kids</a
           >
           <a
             href="./newArrival.html"
-            class="text-white hover:text-indigo-200 text-xl"
+            class="text-white hover:text-indigo-300 text-xl transition duration-300"
             >NEW ARRIVAL</a
           >
           <a
             href="./sales.html"
-            class="text-white hover:text-indigo-200 text-xl"
+            class="text-white hover:text-indigo-300 text-xl transition duration-300"
             >Sales</a
           >
         </nav>

@@ -26,6 +26,15 @@ $name_stmt->bind_result($name);
 $name_stmt->fetch();
 $name_stmt->close();
 
+// Fetch user's payment cards
+$cards_sql = "SELECT id, card_number, expiry_date, cvv, cardholder_name FROM payment_cards WHERE username = ?";
+$cards_stmt = $conn->prepare($cards_sql);
+$cards_stmt->bind_param("s", $current_username);
+$cards_stmt->execute();
+$cards_result = $cards_stmt->get_result();
+$cards = $cards_result->fetch_all(MYSQLI_ASSOC);
+$cards_stmt->close();
+
 $conn->close();
 ?>
 <!DOCTYPE html>
@@ -82,6 +91,52 @@ $conn->close();
             font-size: 1.25rem;
             cursor: pointer;
         }
+        .card {
+            background: linear-gradient(135deg, #d4af37 0%, #ffd700 100%);
+            color: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 200px;
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .card-logo {
+            width: 50px;
+        }
+        .card-number {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.1rem;
+            margin-top: 1rem;
+        }
+        .card-details {
+            font-size: 0.875rem;
+            color: #e0e7ff;
+        }
+        .delete-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: none;
+            border: none;
+            font-size: 1.25rem;
+            color: #e53e3e;
+            cursor: pointer;
+        }
+        .icon {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 0.5rem;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -105,6 +160,12 @@ $conn->close();
         <?php if (isset($_GET['added']) && $_GET['added'] == 'true'): ?>
         <div class="notification">
             <span class="block sm:inline">Card added successfully.</span>
+            <button class="close-btn" onclick="this.parentElement.style.display='none';">&times;</button>
+        </div>
+        <?php endif; ?>
+        <?php if (isset($_GET['deleted']) && $_GET['deleted'] == 'true'): ?>
+        <div class="notification">
+            <span class="block sm:inline">Card deleted successfully.</span>
             <button class="close-btn" onclick="this.parentElement.style.display='none';">&times;</button>
         </div>
         <?php endif; ?>
@@ -178,6 +239,25 @@ $conn->close();
                             </button>
                         </div>
                     </form>
+                </div>
+
+                <!-- Display added cards -->
+                <div class="mt-8">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-4">Your Payment Cards</h2>
+                    <?php foreach ($cards as $card): ?>
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-details"><span class="icon">👤</span><?php echo htmlspecialchars($card['cardholder_name']); ?></div>
+                            <img src="./images/visa.png" class="card-logo" alt="Card Logo" />
+                        </div>
+                        <div class="card-number">**** **** **** <?php echo substr($card['card_number'], -4); ?></div>
+                        <div class="card-details"><span class="icon">📅</span>Expiry: <?php echo htmlspecialchars($card['expiry_date']); ?> | <span class="icon">🔒</span>CVV: <?php echo htmlspecialchars($card['cvv']); ?></div>
+                        <form action="delete_payment.php" method="POST" class="inline">
+                            <input type="hidden" name="card_id" value="<?php echo $card['id']; ?>">
+                            <button type="submit" class="delete-btn">&times;</button>
+                        </form>
+                    </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
