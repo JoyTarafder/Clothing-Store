@@ -148,6 +148,15 @@ $conn->close();
         </div>
     </nav>
 
+    <!-- Notification -->
+    <div id="notification" class="hidden fixed top-4 right-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded" role="alert">
+        <span class="block sm:inline" id="notification-message"></span>
+        <svg class="fill-current h-6 w-6 text-green-500 inline-block mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 15l-5.5-5.5 1.5-1.5L10 12l7-7 1.5 1.5L10 15z"/></svg>
+        <button class="absolute top-0 bottom-0 right-0 px-4 py-3" onclick="hideNotification();">
+            <svg class="fill-current h-6 w-6 text-green-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 5.652a1 1 0 00-1.414 0L10 8.586 7.066 5.652a1 1 0 10-1.414 1.414L8.586 10l-2.934 2.934a1 1 0 101.414 1.414L10 11.414l2.934 2.934a1 1 0 001.414-1.414L11.414 10l2.934-2.934a1 1 0 000-1.414z"/></svg>
+        </button>
+    </div>
+
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <?php if (isset($_GET['updated']) && $_GET['updated'] == 'true'): ?>
         <div class="notification">
@@ -231,5 +240,28 @@ $conn->close();
             </div>
         </div>
     </div>
+
+    <script>
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            const notificationMessage = document.getElementById('notification-message');
+            notificationMessage.textContent = message;
+            notification.classList.remove('hidden');
+            setTimeout(hideNotification, 2000);
+        }
+
+        function hideNotification() {
+            const notification = document.getElementById('notification');
+            notification.classList.add('hidden');
+        }
+
+        // Automatically hide notification after 2 seconds
+        setTimeout(function() {
+            const notification = document.getElementById('notification');
+            if (notification) {
+                notification.style.display = 'none';
+            }
+        }, 2000);
+    </script>
 </body>
 </html>

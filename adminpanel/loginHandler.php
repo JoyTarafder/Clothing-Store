@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $inputUsername = $_POST['username'];
     $inputPassword = $_POST['password'];
 
-    $stmt = $conn->prepare("SELECT * FROM users WHERE username = ? LIMIT 1");
+    $stmt = $conn->prepare("SELECT * FROM adminuser WHERE username = ? LIMIT 1");
     $stmt->bind_param("s", $inputUsername);
     $stmt->execute();
     $result = $stmt->get_result();
