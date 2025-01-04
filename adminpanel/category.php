@@ -40,7 +40,7 @@
                         <a href="orderManagement.html" id="order-management-link" class="sidebar-link block py-2.5 px-4 hover:bg-slate-700 rounded transition duration-200">Order Management</a>
                     </li>
                     <li>
-                        <a href="inventory.html" id="inventory-link" class="sidebar-link block py-2.5 px-4 hover:bg-slate-700 rounded transition duration-200">Inventory</a>
+                        <a href="product.html" id="product-link" class="sidebar-link block py-2.5 px-4 hover:bg-slate-700 rounded transition duration-200">product</a>
                     </li>
                     <li>
                         <a href="category.php" id="category-management-link" class="sidebar-link block py-2.5 px-4 hover:bg-slate-700 rounded transition duration-200">Category Management</a>
@@ -211,7 +211,7 @@
             const linkMap = {
                 "dashboard.html": "dashboard-link",
                 "orderManagement.html": "order-management-link",
-                "inventory.html": "inventory-link",
+                "product.html": "product-link",
                 "category.php": "category-management-link",
                 "userManagement.html": "user-management-link",
                 "vendorManagement.html": "vendor-management-link",
