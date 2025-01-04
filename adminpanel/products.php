@@ -101,7 +101,7 @@
                     </div>
                     <div>
                         <label class="block text-sm font-medium mb-1">Vendor</label>
-                        <select name="vendor" class="w-full border rounded-lg p-2">
+                        <select name="vendor" class="w-full border rounded-lg p-2" required>
                             <?php include 'fetch_vendors.php'; ?>
                         </select>
                     </div>
@@ -172,7 +172,7 @@
                 </div>
 
                 <div class="flex justify-end space-x-2 pt-4">
-                    <button type="button" onclick="closeAddProductModal()" 
+                    <button type="button" onclick="closeModal()" 
                             class="px-4 py-2 border rounded-lg hover:bg-gray-50">Cancel</button>
                     <button type="submit" 
                             class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Add Product</button>
@@ -183,11 +183,11 @@
 
     <script>
         function openAddProductModal() {
-            document.getElementById('productModal').classList.remove('hidden');
+            document.getElementById('addProductModal').classList.remove('hidden');
         }
 
         function closeAddProductModal() {
-            document.getElementById('productModal').classList.add('hidden');
+            document.getElementById('addProductModal').classList.add('hidden');
         }
     </script>
 </body>

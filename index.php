@@ -901,19 +901,19 @@ $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Log in';
           <div>
             <h3 class="text-lg font-medium text-white">HELP</h3>
             <ul class="mt-4 space-y-2 text-sm text-white">
-              <li><a href="#" class="hover:text-zinc-300">FAQs</a></li>
-              <li><a href="#" class="hover:text-zinc-300">Return Policy</a></li>
+              <li><a href="./faqs.php" class="hover:text-zinc-300">FAQs</a></li>
+              <li><a href="./returnpolicy.php" class="hover:text-zinc-300">Return Policy</a></li>
               <li>
-                <a href="#" class="hover:text-zinc-300">Privacy Policy</a>
+                <a href="./privacypolicy.php" class="hover:text-zinc-300">Privacy Policy</a>
               </li>
               <li>
-                <a href="#" class="hover:text-zinc-300">Delivery Policy</a>
+                <a href=".//deliverypolicy.php" class="hover:text-zinc-300">Delivery Policy</a>
               </li>
               <li>
-                <a href="#" class="hover:text-zinc-300">Store Locations</a>
+                <a href="./storelocations.php" class="hover:text-zinc-300">Store Locations</a>
               </li>
               <li>
-                <a href="#" class="hover:text-zinc-300">Terms & Conditions</a>
+                <a href="./terms.php" class="hover:text-zinc-300">Terms & Conditions</a>
               </li>
             </ul>
           </div>
@@ -923,11 +923,12 @@ $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Log in';
             <h3 class="text-lg font-medium text-white">ABOUT</h3>
             <ul class="mt-4 space-y-2 text-sm text-white">
               <li>
-                <a href="./aboutUs.html" class="hover:text-zinc-300"
+                <a href="./aboutus.php" class="hover:text-zinc-300"
                   >About Us</a
                 >
+                
               </li>
-              <li><a href="#" class="hover:text-zinc-300">Career</a></li>
+              <li><a href="./career.php" class="hover:text-zinc-300">Career</a></li>
             </ul>
             <h3 class="text-lg font-medium text-white mt-6">Donate Now</h3>
             <ul class="mt-4 space-y-2 text-sm text-white">
@@ -947,7 +948,7 @@ $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Log in';
             <h3 class="text-lg font-medium text-white">CONTACT</h3>
             <div class="text-sm text-white mt-4">
               <ul class="mt-4 space-y-2 text-sm text-white mb-5">
-                <li><a href="#" class="hover:text-zinc-300">Contact Us</a></li>
+                <li><a href="./contact.php" class="hover:text-zinc-300">Contact Us</a></li>
               </ul>
               <p>
                 <strong>Corporate Office</strong><br />
